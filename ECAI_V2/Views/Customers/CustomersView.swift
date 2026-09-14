@@ -4,6 +4,7 @@
 //
 //  Created by Matthew Comer on 2026-07-17.
 //
+//
 import SwiftUI
 // Displays the customer management screen.
 struct CustomersView: View {
@@ -13,7 +14,7 @@ struct CustomersView: View {
         Customer(name: "Clint", phone: "416-555-3344", address: "Etobicoke, ON"),
         Customer(name: "Jessica", phone: "416-555-7788", address: "Toronto, ON")
     ]
-    // Stores the metallic orange border gradient.
+// Stores the metallic orange border gradient.
     private let borderGradient = LinearGradient(
         colors: [
             Color(red: 1.00, green: 0.62, blue: 0.12),
@@ -23,7 +24,7 @@ struct CustomersView: View {
         startPoint: .topLeading,
         endPoint: .bottomTrailing
     )
-    // Stores the metallic orange title gradient.
+    // Stores the metallic  orange title gradient.
     private let titleGradient = LinearGradient(
         colors: [
             Color(red: 1.00, green: 0.70, blue: 0.18),
@@ -33,7 +34,7 @@ struct CustomersView: View {
         startPoint: .top,
         endPoint: .bottom
     )
-    // Stores the dark customer-card gradient.
+// Stores  the dark customer-card gradient.
     private let cardGradient = LinearGradient(
         colors: [
             Color(red: 0.10, green: 0.075, blue: 0.055),
@@ -42,45 +43,45 @@ struct CustomersView: View {
         startPoint: .topLeading,
         endPoint: .bottomTrailing
     )
-    // Builds the complete Customers screen.
+    // Builds the complete  Customers screen.
     var body: some View {
         // Places the content over the black background.
         ZStack {
-            // Displays the application background.
+        // Displays the application background.
             Color.black
                 .ignoresSafeArea()
-            // Allows the screen to scroll vertically.
+            // Allows the screen  to scroll vertically.
             ScrollView {
                 // Arranges every section vertically.
                 VStack(alignment: .leading, spacing: 20) {
-                    // Displays the branding header.
+                    // Displays the  branding header.
                     brandHeader
                     // Displays the customer artwork.
                     heroCard
-                    // Displays one card for every customer.
+                // Displays one  card for every customer.
                     ForEach(customers) { customer in
                         customerCard(customer: customer)
                     }
                 }
-                // Adds spacing around the screen.
+            // Adds spacing around the screen.
                 .padding()
-                // Keeps the final customer above the tab bar.
+            // Keeps the final customer above the tab bar.
                 .padding(.bottom, 90)
             }
-            // Hides the scroll indicator.
+        // Hides the scroll indicator.
             .scrollIndicators(.hidden)
         }
     }
-    // Creates the Customers branding header.
+    // Creates  the Customers branding header.
     private var brandHeader: some View {
         ZStack(alignment: .topLeading) {
-            // Creates the dark header background.
+            // Creates  the dark header background.
             RoundedRectangle(cornerRadius: 22)
                 .fill(Color(red: 0.055, green: 0.045, blue: 0.045))
-            // Adds the metallic orange border.
+            // Adds  the metallic orange border.
             RoundedRectangle(cornerRadius: 22)
                 .stroke(borderGradient, lineWidth: 2)
-            // Displays the official E.C.A.I. logo.
+        // Displays the official E.C.A.I. logo.
             Image("ECAI-Logo-#1")
                 .resizable()
                 .scaledToFit()
@@ -106,7 +107,7 @@ struct CustomersView: View {
             .frame(maxWidth: .infinity, alignment: .topTrailing)
             .padding(.top, 22)
             .padding(.trailing, 18)
-            // Displays the centered title and subtitle.
+            // Displays the centered title and initials.
             VStack(spacing: 5) {
                 Text("E.C.A.I.")
                     .font(.system(size: 34, weight: .black))
@@ -115,7 +116,10 @@ struct CustomersView: View {
                 Text("C.C.")
                     .font(.subheadline)
                     .fontWeight(.bold)
-                    .foregroundStyle(.white.opacity(0.92))
+                    .tracking(1.4)
+                    .foregroundStyle(
+                        Color(red: 0.95, green: 0.67, blue: 0.20)
+                    )
             }
             .frame(maxWidth: .infinity)
             .padding(.top, 50)

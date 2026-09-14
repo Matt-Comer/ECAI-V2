@@ -4,32 +4,47 @@
 //
 //  Created by Matthew Comer.
 //
+
 import SwiftUI
-// Imports FirebaseCore so the app can connect to the configured Firebase project.
 import FirebaseCore
-// Connects the SwiftUI application lifecycle to Firebase's required application delegate setup.
+import FirebaseAppCheck
+
+// Connects the SwiftUI lifecycle to Firebase.
 final class AppDelegate: NSObject, UIApplicationDelegate {
+
     // Runs when iOS finishes launching ECAI.
     func application(
         _ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
+        didFinishLaunchingWithOptions launchOptions: [
+            UIApplication.LaunchOptionsKey: Any
+        ]? = nil
     ) -> Bool {
-        // Reads GoogleService-Info.plist and initializes the shared Firebase application.
+
+        // Uses Firebase App Check while testing in the simulator.
+        #if DEBUG
+        let providerFactory = AppCheckDebugProviderFactory()
+        AppCheck.setAppCheckProviderFactory(providerFactory)
+        #endif
+
+        // Connects ECAI to the configured Firebase project.
         FirebaseApp.configure()
-        // Confirms that ECAI completed its application launch setup.
+
+        // Confirms that the application finished launching.
         return true
     }
 }
+
 // Creates the main entry point for Elite Contractor AI.
 @main
 struct ECAI_V2App: App {
-    // Registers the application delegate so Firebase initializes before ECAI uses any Firebase service.
+
+    // Registers the application delegate.
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
     // Builds the application's main scene.
     var body: some Scene {
-        // Creates the main application window.
         WindowGroup {
-            // Displays the ECAI splash screen when the app launches.
+            // Displays the ECAI splash screen.
             SplashView()
         }
     }

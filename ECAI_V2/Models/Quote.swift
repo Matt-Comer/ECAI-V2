@@ -4,21 +4,15 @@
 //
 //  Created by Matthew Comer on 2026-06-29.
 //
-
 import Foundation
-
-// Quote model for storing estimate information
+// Creates the model used to store one quote.
 struct Quote: Identifiable {
-
-    // Unique ID for each quote
+    // Creates a unique identifier for each quote.
     let id = UUID()
-
-    // Customer name for the quote
+    // Stores the customer name for the quote.
     var customerName: String
-
-    // Quote amount
+    // Stores the total quote amount.
     var amount: Double
-
-    // Current quote status
+    // Stores the current quote status.
     var status: String
 }

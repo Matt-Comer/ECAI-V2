@@ -4,58 +4,48 @@
 //
 //  Created by Matthew Comer on 2026-06-29.
 //
-
 import SwiftUI
 import AVKit
-
-// Reusable video background view
+// Creates a reusable video  background for E.C.A.I. screens.
 struct VideoBackgroundView: UIViewRepresentable {
-
-    // Name of the mp4 video file
+    // Stores the name of the mp4 video file.
     let videoName: String
-
-    // Creates the UIKit video view
+    // Creates the UIKit view used to display the video.
     func makeUIView(context: Context) -> UIView {
-
+        // Creates the view that holds the video layer.
         let view = UIView()
-
-        // Finds the video file in the app bundle
-        guard let path = Bundle.main.path(forResource: videoName, ofType: "mp4") else {
+        // Finds the video file  inside the application bundle.
+        guard let path = Bundle.main.path(
+            forResource: videoName,
+            ofType: "mp4"
+        ) else {
             return view
         }
-
-        // Creates the video player
-        let player = AVPlayer(url: URL(fileURLWithPath: path))
-
-        // Creates the video layer
+        // Creates the video player.
+        let player = AVPlayer(
+            url: URL(fileURLWithPath: path)
+        )
+        // Creates the layer used to display the video.
         let playerLayer = AVPlayerLayer(player: player)
-
-        // Makes video fill the screen
+        // Makes the video fill the available screen.
         playerLayer.videoGravity = .resizeAspectFill
         playerLayer.frame = UIScreen.main.bounds
-
-        // Adds the video layer to the view
+        // Adds the video layer to the view.
         view.layer.addSublayer(playerLayer)
-
-        // Loops the video when it ends
+        // Restarts the video when it reaches the end.
         NotificationCenter.default.addObserver(
             forName: .AVPlayerItemDidPlayToEndTime,
             object: player.currentItem,
             queue: .main
         ) { _ in
-
             player.seek(to: .zero)
             player.play()
         }
-
-        // Starts playing video
+        // Starts playing the video.
         player.play()
-
         return view
     }
-
-    // Required update function
+    // Keeps the UIKit video view connected to SwiftUI.
     func updateUIView(_ uiView: UIView, context: Context) {
-
     }
 }

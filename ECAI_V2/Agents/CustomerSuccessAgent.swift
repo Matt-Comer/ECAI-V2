@@ -1,7 +1,4 @@
 
-
-
-//
 //  CustomerSuccessAgent.swift
 //  ECAI_V2
 //
@@ -14,11 +11,11 @@ struct CustomerSuccessAgent: ECAIAgent {
     let name = "Customer Success Agent"
     // Stores a short explanation of the agent's purpose.
     let description = "Creates professional customer follow-ups, reminders, and service messages."
-    // Creates a customer communication response from the information provided.
+// Creates a customer communication response from the information provided.
     func generateResponse(
         from input: String
     ) -> String {
-        // Removes extra spaces from the beginning and end of the input.
+        // Removes extra spaces from the  beginning and end of the input.
         let cleanedInput = input.trimmingCharacters(
             in: .whitespacesAndNewlines
         )
@@ -28,9 +25,9 @@ struct CustomerSuccessAgent: ECAIAgent {
             Please enter the customer name, project details, and the type of message you need.
             """
         }
-        // Converts the input to lowercase so the requested message type can be identified.
+        // Converts the input to lowercase so the requested message type can be  identified.
         let lowercaseInput = cleanedInput.lowercased()
-        // Creates an estimate follow-up message.
+        // Creates an estimate follow-up  message.
         if lowercaseInput.contains("estimate") ||
             lowercaseInput.contains("quote") {
             return """
@@ -42,7 +39,7 @@ struct CustomerSuccessAgent: ECAIAgent {
             Elite Contractor AI
             """
         }
-        // Creates a payment reminder message.
+    // Creates a payment reminder message.
         if lowercaseInput.contains("payment") ||
             lowercaseInput.contains("invoice") ||
             lowercaseInput.contains("balance") {
@@ -55,7 +52,7 @@ struct CustomerSuccessAgent: ECAIAgent {
             Elite Contractor AI
             """
         }
-        // Creates an appointment confirmation message.
+    // Creates an appointment confirmation  message.
         if lowercaseInput.contains("appointment") ||
             lowercaseInput.contains("scheduled") ||
             lowercaseInput.contains("meeting") {
@@ -68,7 +65,7 @@ struct CustomerSuccessAgent: ECAIAgent {
             Elite Contractor AI
             """
         }
-        // Creates a project update message.
+        // Creates  a project update message.
         if lowercaseInput.contains("update") ||
             lowercaseInput.contains("progress") {
             return """
@@ -80,7 +77,7 @@ struct CustomerSuccessAgent: ECAIAgent {
             Elite Contractor AI
             """
         }
-        // Creates a project completion message.
+        //  Creates a project completion message.
         if lowercaseInput.contains("complete") ||
             lowercaseInput.contains("finished") ||
             lowercaseInput.contains("done") {
@@ -93,7 +90,7 @@ struct CustomerSuccessAgent: ECAIAgent {
             Elite Contractor AI
             """
         }
-        // Creates a customer review request.
+        // Creates a customer review  request.
         if lowercaseInput.contains("review") {
             return """
             Hello,
@@ -104,7 +101,7 @@ struct CustomerSuccessAgent: ECAIAgent {
             Elite Contractor AI
             """
         }
-        // Creates a general customer follow-up message when no specific message type is found.
+        // Creates a general customer follow-up message when no specific message  type is found.
         return """
         Hello,
         I am following up regarding \(cleanedInput).

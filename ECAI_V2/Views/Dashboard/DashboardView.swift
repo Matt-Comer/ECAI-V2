@@ -86,7 +86,7 @@ struct DashboardView: View {
             .frame(maxWidth: .infinity, alignment: .topTrailing)
             .padding(.top, 22)
             .padding(.trailing, 18)
-            // Displays the centered title and subtitle.
+            // Displays the centered title and initials.
             VStack(spacing: 5) {
                 Text("E.C.A.I.")
                     .font(.system(size: 34, weight: .black))
@@ -95,7 +95,10 @@ struct DashboardView: View {
                 Text("B.C.C.")
                     .font(.subheadline)
                     .fontWeight(.bold)
-                    .foregroundStyle(.white.opacity(0.92))
+                    .tracking(1.4)
+                    .foregroundStyle(
+                        Color(red: 0.95, green: 0.67, blue: 0.20)
+                    )
             }
             .frame(maxWidth: .infinity)
             .padding(.top, 50)

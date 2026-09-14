@@ -1,3 +1,4 @@
+
 //
 //  QuotesView.swift
 //  ECAI_V1
@@ -5,23 +6,23 @@
 //  Created by Matthew Comer on 2026-06-29.
 //
 import SwiftUI
-// Displays the Quotes screen for Elite Contractor AI.
+// Displays the Quotes screen  for Elite Contractor AI.
 struct QuotesView: View {
     // Stores the sample quote information displayed on this screen.
     let quotes = [
-        // Creates the first sample quote.
+    // Creates the first sample quote.
         Quote(
             customerName: "Frank",
             amount: 2500,
             status: "Sent"
         ),
-        // Creates the second sample quote.
+    // Creates the second sample  quote.
         Quote(
             customerName: "Clint",
             amount: 850,
             status: "Draft"
         ),
-        // Creates the third sample quote.
+        // Creates the third sample  quote.
         Quote(
             customerName: "Jessica",
             amount: 6200,
@@ -29,25 +30,25 @@ struct QuotesView: View {
         )
     ]
     var body: some View {
-        // Creates the navigation system for this screen.
+        // Creates the navigation   system for this screen.
         NavigationStack {
-            // Places the background behind the quote content.
+            // Places the  background behind the quote content.
             ZStack {
                 // Displays the black application background.
                 Color.black
                     .ignoresSafeArea()
-                // Allows the quote list to scroll vertically.
+            // Allows the  quote  list to scroll vertically.
                 ScrollView {
-                    // Places every section of the screen vertically.
+                // Places every section of the screen vertically.
                     VStack(
                         alignment: .leading,
                         spacing: 22
                     ) {
-                        // Displays the same solid header used by the other main screens.
+                    // Displays the same  solid header used by the other main screens.
                         ZStack(
                             alignment: .topLeading
                         ) {
-                            // Displays the matte-black header background.
+            // Displays the matte-black  header background.
                             RoundedRectangle(
                                 cornerRadius: 22
                             )
@@ -58,7 +59,7 @@ struct QuotesView: View {
                                     blue: 0.045
                                 )
                             )
-                            // Displays the metallic orange header border.
+                        // Displays the metallic orange header border.
                             RoundedRectangle(
                                 cornerRadius: 22
                             )
@@ -66,7 +67,7 @@ struct QuotesView: View {
                                 ECAITheme.orangeMetal,
                                 lineWidth: 2
                             )
-                            // Displays the correct Dashboard logo.
+                            // Displays the correct Dashboard  logo.
                             Image("ECAI-Logo-#1")
                                 .resizable()
                                 .scaledToFit()
@@ -85,7 +86,7 @@ struct QuotesView: View {
                             HStack(
                                 spacing: 5
                             ) {
-                                // Displays the Facebook icon.
+                                // Displays  the Facebook icon.
                                 Image("facebook")
                                     .resizable()
                                     .scaledToFit()
@@ -131,7 +132,7 @@ struct QuotesView: View {
                                     .font(.subheadline)
                                     .fontWeight(.bold)
                                     .foregroundStyle(
-                                        .white.opacity(0.92)
+                                        ECAITheme.orangeMetal
                                     )
                             }
                             .frame(
@@ -153,7 +154,6 @@ struct QuotesView: View {
                         )
                         // Displays the Quotes PNG using the same layout as Customers.
                         ZStack(
-                            // Anchors the Quotes text to the lower-left corner.
                             alignment: .bottomLeading
                         ) {
                             // Displays the complete Quotes PNG without cropping the people.

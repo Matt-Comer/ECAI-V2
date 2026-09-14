@@ -4,21 +4,15 @@
 //
 //  Created by Matthew Comer on 2026-06-29.
 //
-
 import Foundation
-
 // Job model for storing job information
 struct Job: Identifiable {
-
-    // Unique ID for each job
+// Unique ID for each job
     let id = UUID()
-
-    // Customer name
+// Customer name
     var customerName: String
-
-    // Type of work being completed
+// Type of work being completed
     var jobType: String
-
-    // Current job status
+// Current job  status
     var status: String
 }

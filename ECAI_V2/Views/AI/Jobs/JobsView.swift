@@ -132,7 +132,7 @@ struct JobsView: View {
                 Text("J.C.")
                     .font(.subheadline)
                     .fontWeight(.bold)
-                    .foregroundStyle(.white.opacity(0.92))
+                    .foregroundStyle(titleGradient)
             }
             .frame(maxWidth: .infinity)
             .padding(.top, 50)

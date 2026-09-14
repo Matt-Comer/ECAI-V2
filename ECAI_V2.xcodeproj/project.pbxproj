@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		337FC30F30390C3C001E5B92 /* FirebaseAILogic in Frameworks */ = {isa = PBXBuildFile; productRef = 337FC30E30390C3C001E5B92 /* FirebaseAILogic */; };
+		337FC311303912C0001E5B92 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 337FC310303912C0001E5B92 /* FirebaseAppCheck */; };
 		338457E730094BBF000C85C2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 338457E630094BBF000C85C2 /* FirebaseAnalytics */; };
 		338457E930094BBF000C85C2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 338457E830094BBF000C85C2 /* FirebaseAuth */; };
 		338457EB30094BBF000C85C2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 338457EA30094BBF000C85C2 /* FirebaseFirestore */; };
@@ -34,16 +36,26 @@
 				338457ED30094BBF000C85C2 /* FirebaseStorage in Frameworks */,
 				338457E930094BBF000C85C2 /* FirebaseAuth in Frameworks */,
 				338457EB30094BBF000C85C2 /* FirebaseFirestore in Frameworks */,
+				337FC311303912C0001E5B92 /* FirebaseAppCheck in Frameworks */,
+				337FC30F30390C3C001E5B92 /* FirebaseAILogic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		337FC30D30390C3C001E5B92 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		33CABE1B3001C747005A9514 = {
 			isa = PBXGroup;
 			children = (
 				33CABE263001C747005A9514 /* ECAI_V2 */,
+				337FC30D30390C3C001E5B92 /* Frameworks */,
 				33CABE253001C747005A9514 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -80,6 +92,8 @@
 				338457E830094BBF000C85C2 /* FirebaseAuth */,
 				338457EA30094BBF000C85C2 /* FirebaseFirestore */,
 				338457EC30094BBF000C85C2 /* FirebaseStorage */,
+				337FC30E30390C3C001E5B92 /* FirebaseAILogic */,
+				337FC310303912C0001E5B92 /* FirebaseAppCheck */,
 			);
 			productName = ECAI_V2;
 			productReference = 33CABE243001C747005A9514 /* ECAI_V2.app */;
@@ -359,6 +373,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		337FC30E30390C3C001E5B92 /* FirebaseAILogic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 338457E530094BBF000C85C2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAILogic;
+		};
+		337FC310303912C0001E5B92 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 338457E530094BBF000C85C2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
 		338457E630094BBF000C85C2 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 338457E530094BBF000C85C2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

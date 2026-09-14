@@ -4,7 +4,6 @@
 //
 //  Created by matthew comer on 2026-08-10.
 //
-
 import Foundation
 // Imports Combine so authentication changes update SwiftUI immediately.
 import Combine
@@ -97,7 +96,7 @@ final class AuthService: ObservableObject {
             // Confirms that login completed successfully.
             return true
         } catch {
-            // Displays Firebase's exact login error.
+        // Displays Firebase's exact login error.
             errorMessage = error.localizedDescription
             // Confirms that login did not complete.
             return false
@@ -120,34 +119,34 @@ final class AuthService: ObservableObject {
             )
             // Stores the successful password-reset message.
             successMessage = "Password-reset email sent."
-            // Confirms that the password-reset request completed.
+        // Confirms that the password-reset request completed.
             return true
         } catch {
-            // Displays Firebase's exact password-reset error.
+        // Displays Firebase's exact password-reset error.
             errorMessage = error.localizedDescription
             // Confirms that the password-reset request did not complete.
             return false
         }
     }
-    // Signs the current ECAI user out of Firebase Authentication.
+    // Signs the current ECAI  user out of Firebase Authentication.
     func signOut() {
-        // Clears feedback left by an earlier authentication request.
+        // Clears feedback left  by an earlier authentication request.
         clearFeedback()
         do {
             // Ends the current Firebase Authentication session.
             try Auth.auth().signOut()
-            // Stores the successful logout message.
+            // Stores the successfulm logout message.
             successMessage = "Signed out successfully."
         } catch {
-            // Displays Firebase's exact logout error.
+        // Displays Firebase's exact logout error.
             errorMessage = error.localizedDescription
         }
     }
-    // Clears all authentication feedback before a new request begins.
+    // Clears  all authentication feedback before a new request begins.
     func clearFeedback() {
         // Removes the previous Firebase error.
         errorMessage = ""
-        // Removes the previous successful request message.
+    // Removes the previous successful request message.
         successMessage = ""
     }
 }

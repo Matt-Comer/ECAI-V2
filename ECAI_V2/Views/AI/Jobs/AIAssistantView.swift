@@ -9,17 +9,17 @@ import SwiftUI
 private enum ECAIWorkspace: String, Identifiable {
     // Opens the Customer Success Agent.
     case customer
-    // Opens the Marketing Intelligence Agent.
+    // Opens the  Marketing Intelligence Agent.
     case marketing
     // Opens the Project Intelligence Agent for material planning.
     case materials
-    // Opens the Project Intelligence Agent for contract drafting.
+    // Opens the Project  Intelligence Agent for contract drafting.
     case contract
     // Uses the workspace name as its stable SwiftUI identifier.
     var id: String {
         rawValue
     }
-    // Stores the title displayed at the top of the workspace.
+    // Stores the  title displayed at the top of the workspace.
     var title: String {
         // Returns the correct title for the selected workspace.
         switch self {

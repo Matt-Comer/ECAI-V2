@@ -4,9 +4,7 @@
 //
 //  Created by Matthew Comer on 2026-07-17.
 //
-
 import SwiftUI
-
 // Displays one reusable Business Profile information card.
 struct BusinessCardView: View {
     // Stores the image displayed inside the card.
@@ -41,7 +39,7 @@ struct BusinessCardView: View {
             // Adds spacing around the text content.
             .padding(16)
         }
-        // Displays the metallic card background.
+        // Displays the metallic  card background.
         .background(
             LinearGradient(
                 colors: [
@@ -54,7 +52,7 @@ struct BusinessCardView: View {
         )
         // Rounds the corners of the card.
         .clipShape(RoundedRectangle(cornerRadius: 18))
-        // Adds a metallic orange border around the card.
+        // Adds a metallic orange  border around the card.
         .overlay(
             RoundedRectangle(cornerRadius: 18)
                 .stroke(
@@ -69,8 +67,7 @@ struct BusinessCardView: View {
         )
     }
 }
-
-// Displays the BusinessCardView inside Xcode previews.
+// Displays the BusinessCardView  inside Xcode previews.
 #Preview {
     // Creates a preview of the reusable Business Profile card.
     BusinessCardView(
