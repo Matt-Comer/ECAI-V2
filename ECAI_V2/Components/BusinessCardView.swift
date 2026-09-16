@@ -30,7 +30,17 @@ struct BusinessCardView: View {
                 Text(title)
                     .font(.title3)
                     .fontWeight(.bold)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [
+                                Color(red: 1.00, green: 0.88, blue: 0.45),
+                                Color(red: 0.83, green: 0.69, blue: 0.22),
+                                Color(red: 0.67, green: 0.49, blue: 0.10)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
                 // Displays the Business Profile description.
                 Text(description)
                     .font(.subheadline)
@@ -56,13 +66,21 @@ struct BusinessCardView: View {
         .overlay(
             RoundedRectangle(cornerRadius: 18)
                 .stroke(
-                    ECAITheme.orangeMetal.opacity(0.80),
+                    LinearGradient(
+                        colors: [
+                            Color(red: 1.00, green: 0.88, blue: 0.45),
+                            Color(red: 0.83, green: 0.69, blue: 0.22),
+                            Color(red: 0.67, green: 0.49, blue: 0.10)
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    ),
                     lineWidth: 1.4
                 )
         )
         // Adds a subtle orange glow.
         .shadow(
-            color: Color.orange.opacity(0.18),
+            color: Color(red: 0.83, green: 0.69, blue: 0.22).opacity(0.18),
             radius: 8
         )
     }

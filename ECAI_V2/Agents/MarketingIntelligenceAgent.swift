@@ -5,27 +5,32 @@
 //  Created by Matthew Comer on 2026-07-14.
 //
 import Foundation
-// Creates the E.C.A.I.  agent responsible for marketing support.
+// Creates the E.C.A.I. agent responsible for marketing support.
 struct MarketingIntelligenceAgent: ECAIAgent {
     // Stores the name displayed for this agent.
     let name = "Marketing Intelligence Agent"
     // Describes what this agent handles.
     let description = "Creates marketing campaigns, promotional ideas, social media content, and customer outreach."
-    // Creates a  marketing response from the information provided.
+    // Creates a marketing response from the information provided.
     func generateResponse(from input: String) -> String {
-// Removes extra spaces from the users input.
-        let cleanedInput = input.trimmingCharacters(in: .whitespacesAndNewlines)
+        // Removes extra spaces from the users input.
+        let cleanedInput = input
+            .replacingOccurrences(
+                of: "Create a practical contractor marketing campaign using these details:",
+                with: ""
+            )
+            .trimmingCharacters(in: .whitespacesAndNewlines)
         // Makes sure marketing information was entered.
         if cleanedInput.isEmpty {
             return """
             Please enter the service, target audience, location, and marketing goal.
             """
         }
-        // Converts  the input to lowercase for keyword matching.
+        // Converts the input to lowercase for keyword matching.
         let service = cleanedInput.lowercased()
         // Finds the type of contractor service.
         let serviceType = findServiceType(service)
-        // Gets the marketing details  for the service.
+        // Gets the marketing details for the service.
         let details = marketingDetails(for: serviceType)
         // Builds and returns the marketing strategy.
         return buildMarketingStrategy(
@@ -34,7 +39,7 @@ struct MarketingIntelligenceAgent: ECAIAgent {
             details: details
         )
     }
-    // Finds  the contractor service using keywords.
+    // Finds the contractor service using keywords.
     private func findServiceType(_ service: String) -> String {
         // Checks for landscaping services.
         if containsAny(service, ["landscaping", "gardening", "lawn", "garden"]) {
@@ -44,7 +49,7 @@ struct MarketingIntelligenceAgent: ECAIAgent {
         if containsAny(service, ["concrete", "parging", "cement", "foundation"]) {
             return "CONCRETE"
         }
-        //  Checks for interlocking services.
+        // Checks for interlocking services.
         if containsAny(service, ["interlock", "paver", "patio", "walkway"]) {
             return "INTERLOCKING"
         }
@@ -56,7 +61,7 @@ struct MarketingIntelligenceAgent: ECAIAgent {
         if containsAny(service, ["carpentry", "deck", "stairs", "railing", "wood"]) {
             return "CARPENTRY"
         }
-        // Checks for  demolition services.
+        // Checks for demolition services.
         if containsAny(service, ["demolition", "demo", "removal", "cleanup"]) {
             return "DEMOLITION AND REMOVAL"
         }
@@ -90,11 +95,17 @@ struct MarketingIntelligenceAgent: ECAIAgent {
         Target customers:
         \(details.customers)
 
+        Sales approach:
+        Lead with the customer's problem and give them a clear reason to act now.
+
         Recommended promotion:
         \(details.promotion)
 
         Social media caption:
         \(details.caption)
+
+        Follow-up:
+        Follow serious leads quickly and look for related work that can be added to the job.
 
         Call to action:
         \(details.callToAction)

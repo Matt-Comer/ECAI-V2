@@ -4,9 +4,7 @@
 //
 //  Created by Matthew Comer.
 //
-
 import SwiftUI
-
 // Displays the main navigation for Elite Contractor AI.
 struct ContentView: View {
 
@@ -87,8 +85,14 @@ struct ContentView: View {
 
         }
 
-        // Applies the ECAI orange accent colour.
-        .tint(.orange)
+        // Applies the ECAI gold accent colour.
+        .tint(
+            Color(
+                red: 0.83,
+                green: 0.69,
+                blue: 0.22
+            )
+        )
 
     }
 

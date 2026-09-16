@@ -6,13 +6,13 @@
 import Foundation
 // Creates the agent responsible for contractor project planning.
 struct ProjectIntelligenceAgent: ECAIAgent {
-    // Stores  the name displayed for this agent.
+    // Stores the name displayed for this agent.
     let name = "Project Intelligence Agent"
-// Describes what this agent handles.
+    // Describes what this agent handles.
     let description = "Creates project plans, schedules, material lists, and workflow recommendations."
     // Creates a project plan from the information entered.
     func generateResponse(from input: String) -> String {
-        // Removes extra  spaces from the user's input.
+        // Removes extra spaces from the user's input.
         let cleanedInput = input.trimmingCharacters(in: .whitespacesAndNewlines)
         // Makes sure project information was entered.
         if cleanedInput.isEmpty {
@@ -20,9 +20,29 @@ struct ProjectIntelligenceAgent: ECAIAgent {
             Please enter the project type, measurements, materials, timeline, crew size, and current job status.
             """
         }
+        // Handles material estimator requests.
+        if cleanedInput.contains("Create a detailed material estimate") {
+            let materialDetails = cleanedInput
+                .replacingOccurrences(
+                    of: "Create a detailed material estimate and identify quantities that still require confirmation using these details:",
+                    with: ""
+                )
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+            return buildMaterialEstimate(from: materialDetails)
+        }
+        // Handles contractor agreement requests.
+        if cleanedInput.contains("Create a professional draft contractor service agreement") {
+            let contractDetails = cleanedInput
+                .replacingOccurrences(
+                    of: "Create a professional draft contractor service agreement. Include scope, exclusions, payment schedule, changes, delays, warranty, cleanup, and customer approval. Clearly label it as a draft requiring review. Use these details:",
+                    with: ""
+                )
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+            return buildContract(from: contractDetails)
+        }
         // Converts the input to lowercase for keyword matching.
         let project = cleanedInput.lowercased()
-        // Finds the type  of contractor project.
+        // Finds the type of contractor project.
         let projectType = findProjectType(project)
         // Gets the planning details for the project.
         let details = projectDetails(for: projectType)
@@ -59,7 +79,7 @@ struct ProjectIntelligenceAgent: ECAIAgent {
         if containsAny(project, ["demolition", "demo", "removal", "tear down"]) {
             return "DEMOLITION"
         }
-    // Uses general  construction when no category matches.
+        // Uses general construction when no category matches.
         return "GENERAL CONSTRUCTION"
     }
     // Checks the project description for matching keywords.
@@ -103,11 +123,155 @@ struct ProjectIntelligenceAgent: ECAIAgent {
         \(details.risks)
         """
     }
+    // Builds a material estimate from the project information entered.
+    private func buildMaterialEstimate(from project: String) -> String {
+        // Converts the project information to lowercase for keyword matching.
+        let lowerProject = project.lowercased()
+        // Finds the project type using the existing project categories.
+        let projectType = findProjectType(lowerProject)
+        // Gets the existing contractor material information for the project.
+        let details = projectDetails(for: projectType)
+        // Finds numbers entered with the project information.
+        let numbers = project.components(
+            separatedBy: CharacterSet.decimalDigits.inverted
+        )
+        .compactMap { Double($0) }
+        // Uses the first number as the entered project quantity when available.
+        let enteredQuantity = numbers.first
+        // Handles drywall estimates separately because drywall uses sheet coverage.
+        if lowerProject.contains("drywall") {
+            // Calculates drywall sheets when square footage was entered.
+            if let squareFeet = enteredQuantity {
+                // Adds approximately ten percent for cuts and waste.
+                let adjustedSquareFeet = squareFeet * 1.10
+                // Calculates the number of standard 4 x 8 drywall sheets required.
+                let sheetCount = Int(ceil(adjustedSquareFeet / 32))
+                return """
+                DRYWALL MATERIAL ESTIMATE
+
+                Project:
+                \(project)
+
+                Estimated project area:
+                \(Int(squareFeet)) sq ft
+
+                Estimated materials:
+                • \(sheetCount) standard 4 x 8 drywall sheets including approximately 10% waste.
+                • Drywall screws.
+                • Joint tape.
+                • Joint compound.
+                • Corner bead where required.
+                • Primer for new drywall.
+                • Sanding supplies.
+
+                Quantities still requiring confirmation:
+                • Confirm whether the entered square footage represents wall area or floor area.
+                • Confirm drywall thickness.
+                • Confirm wall and ceiling measurements.
+                • Confirm openings, corners, and required cuts.
+                • Confirm whether moisture-resistant or fire-rated drywall is required.
+                • Confirm screw, compound, tape, and primer quantities from final site measurements.
+
+                Final quantities should be verified from site measurements before purchasing materials.
+                """
+            }
+            // Returns the drywall material list when measurements were not entered.
+            return """
+            DRYWALL MATERIAL ESTIMATE
+
+            Project:
+            \(project)
+
+            Estimated materials:
+            • Standard drywall sheets.
+            • Drywall screws.
+            • Joint tape.
+            • Joint compound.
+            • Corner bead where required.
+            • Primer for new drywall.
+            • Sanding supplies.
+
+            Quantities still requiring confirmation:
+            • Total square footage.
+            • Drywall thickness.
+            • Wall and ceiling measurements.
+            • Openings and outside corners.
+            • Moisture-resistant or fire-rated drywall requirements.
+
+            Enter the project square footage to calculate the estimated number of drywall sheets.
+            """
+        }
+        // Returns the existing contractor material plan for other project types.
+        return """
+        \(projectType) MATERIAL ESTIMATE
+
+        Project:
+        \(project)
+
+        Estimated materials:
+        \(details.materials)
+
+        Quantities still requiring confirmation:
+        • Confirm the complete project measurements.
+        • Confirm required material thicknesses and depths.
+        • Confirm product coverage rates.
+        • Confirm cuts, waste, and additional material requirements.
+        • Confirm existing site conditions before purchasing materials.
+
+        Final quantities should be verified from site measurements before purchasing materials.
+        """
+    }
+    // Builds a draft contractor service agreement.
+    private func buildContract(from project: String) -> String {
+        return """
+        DRAFT CONTRACTOR SERVICE AGREEMENT
+        REQUIRES CUSTOMER AND CONTRACTOR REVIEW
+
+        Project:
+        \(project)
+
+        Scope of work:
+        Contractor will complete the work described above. Final measurements, materials, finishes, quantities, and site conditions must be confirmed before work begins.
+
+        Exclusions:
+        Work not specifically included in the agreed scope is excluded. Hidden damage, hazardous materials, permits, engineering, utility work, and additional repairs are excluded unless added in writing.
+
+        Payment schedule:
+        Deposit: Due before work begins.
+        Progress payment: Due as agreed during the project.
+        Final payment: Due when the agreed work is completed.
+
+        Changes and additional work:
+        Any work outside the original scope requires customer approval and may change the project price and completion date.
+
+        Delays:
+        Weather, material shortages, hidden conditions, customer changes, site access, or circumstances outside the contractor's control may affect the schedule.
+
+        Warranty:
+        Workmanship concerns must be reported within the agreed warranty period. Normal wear, existing conditions, customer damage, product failure, and work completed by others are excluded.
+
+        Cleanup:
+        Contractor will remove normal construction debris created by the agreed work and leave the work area reasonably clean at completion.
+
+        Customer approval:
+        Customer confirms that the scope, price, payment terms, and project conditions have been reviewed and accepted before work begins.
+
+        Customer: ______________________________
+
+        Signature: _____________________________    Date: _____________
+
+        Contractor: ____________________________
+
+        Signature: _____________________________    Date: _____________
+
+        DRAFT — REVIEW BEFORE USE OR SIGNING
+        """
+    }
     // Returns the correct planning details for each project type.
     private func projectDetails(for type: String) -> ProjectDetails {
         // Selects the correct contractor project information.
         switch type {
-// Creates the interlocking project details.
+        // Creates the interlocking project details.
         case "INTERLOCKING":
             return ProjectDetails(
                 preConstruction: """
@@ -154,7 +318,7 @@ struct ProjectIntelligenceAgent: ECAIAgent {
                 • Material shortages can delay completion.
                 """
             )
-        //  Creates the concrete project details.
+        // Creates the concrete project details.
         case "CONCRETE":
             return ProjectDetails(
                 preConstruction: """
@@ -202,7 +366,7 @@ struct ProjectIntelligenceAgent: ECAIAgent {
                 • Poor surface preparation can cause future failure.
                 """
             )
-        // Creates the  carpentry project details.
+        // Creates the carpentry project details.
         case "CARPENTRY":
             return ProjectDetails(
                 preConstruction: """
@@ -251,7 +415,7 @@ struct ProjectIntelligenceAgent: ECAIAgent {
                 • Material movement may occur as pressure-treated lumber dries.
                 """
             )
-    // Creates the painting project details.
+        // Creates the painting project details.
         case "PAINTING":
             return ProjectDetails(
                 preConstruction: """
@@ -299,7 +463,7 @@ struct ProjectIntelligenceAgent: ECAIAgent {
                 • Colour changes may require additional coats.
                 """
             )
-        // Creates the  landscaping project details.
+        // Creates the landscaping project details.
         case "LANDSCAPING":
             return ProjectDetails(
                 preConstruction: """
@@ -347,7 +511,7 @@ struct ProjectIntelligenceAgent: ECAIAgent {
                 • Customer expectations must be clear before removing mature plants.
                 """
             )
-    // Creates the demolition project details.
+        // Creates the demolition project details.
         case "DEMOLITION":
             return ProjectDetails(
                 preConstruction: """
@@ -395,7 +559,7 @@ struct ProjectIntelligenceAgent: ECAIAgent {
                 • Limited access may slow debris removal.
                 """
             )
-        //Creates the general  construction project details.
+        //Creates the general construction project details.
         default:
             return ProjectDetails(
                 preConstruction: """

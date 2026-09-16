@@ -86,10 +86,20 @@ struct SettingsView: View {
             }
             // Uses the plain button style so the ECAI design remains in control.
             .buttonStyle(.plain)
-            // Displays the logout label in black over the orange button.
+            // Displays the logout label in black over the gold button.
             .foregroundStyle(.black)
-            // Displays the ECAI orange logout button background.
-            .background(Color.orange)
+            // Displays the ECAI gold logout button background.
+            .background(
+                LinearGradient(
+                    colors: [
+                        Color(red: 1.00, green: 0.88, blue: 0.45),
+                        Color(red: 0.83, green: 0.69, blue: 0.22),
+                        Color(red: 0.67, green: 0.49, blue: 0.10)
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+            )
             // Rounds the logout button corners.
             .clipShape(RoundedRectangle(cornerRadius: 12))
         }
@@ -114,19 +124,30 @@ struct SettingsView: View {
                 "Enable Notifications",
                 isOn: $notificationsEnabled
             )
+            .foregroundStyle(
+                Color(red: 0.83, green: 0.69, blue: 0.22)
+            )
             // Allows quote reminders to be enabled or disabled.
             Toggle(
                 "Quote Reminders",
                 isOn: $quoteRemindersEnabled
+            )
+            .foregroundStyle(
+                Color(red: 0.83, green: 0.69, blue: 0.22)
             )
             // Allows job reminders to be enabled or disabled.
             Toggle(
                 "Job Reminders",
                 isOn: $jobRemindersEnabled
             )
+            .foregroundStyle(
+                Color(red: 0.83, green: 0.69, blue: 0.22)
+            )
         }
-        // Applies the orange tint to the toggles.
-        .tint(.orange)
+        // Applies the gold tint to the toggles.
+        .tint(
+            Color(red: 0.83, green: 0.69, blue: 0.22)
+        )
         // Allows the card to fill the available width.
         .frame(maxWidth: .infinity, alignment: .leading)
         // Adds spacing inside the card.
@@ -148,6 +169,9 @@ struct SettingsView: View {
                 "Sound Effects",
                 isOn: $soundEnabled
             )
+            .foregroundStyle(
+                Color(red: 0.83, green: 0.69, blue: 0.22)
+            )
             // Displays the current application theme.
             settingsInformationRow(
                 icon: "paintpalette.fill",
@@ -158,11 +182,13 @@ struct SettingsView: View {
             settingsInformationRow(
                 icon: "circle.fill",
                 title: "Accent Colour",
-                value: "Orange"
+                value: "Gold"
             )
         }
-        // Applies the orange tint to the toggle.
-        .tint(.orange)
+        // Applies the gold tint to the toggle.
+        .tint(
+            Color(red: 0.83, green: 0.69, blue: 0.22)
+        )
         // Allows the card to fill the available width.
         .frame(maxWidth: .infinity, alignment: .leading)
         // Adds spacing inside the card.
@@ -211,7 +237,9 @@ struct SettingsView: View {
         HStack(spacing: 10) {
             // Displays the heading icon.
             Image(systemName: icon)
-                .foregroundStyle(ECAITheme.orangeMetal)
+                .foregroundStyle(
+                    Color(red: 0.83, green: 0.69, blue: 0.22)
+                )
             // Displays the heading title.
             Text(title)
                 .font(.headline)
@@ -227,7 +255,9 @@ struct SettingsView: View {
         HStack(spacing: 12) {
             // Displays the row icon.
             Image(systemName: icon)
-                .foregroundStyle(ECAITheme.orangeMetal)
+                .foregroundStyle(
+                    Color(red: 0.83, green: 0.69, blue: 0.22)
+                )
                 .frame(width: 24)
             // Displays the row title.
             Text(title)
@@ -246,7 +276,7 @@ struct SettingsView: View {
 }
 // Creates the reusable Settings card appearance.
 private extension View {
-    // Applies the dark card background, orange border, and glow.
+    // Applies the dark card background, gold border, and glow.
     func settingsCard() -> some View {
         // Applies every card style to the selected view.
         self
@@ -263,17 +293,25 @@ private extension View {
             )
             // Rounds the card corners.
             .clipShape(RoundedRectangle(cornerRadius: 18))
-            // Adds the metallic orange border.
+            // Adds the metallic gold border.
             .overlay(
                 RoundedRectangle(cornerRadius: 18)
                     .stroke(
-                        ECAITheme.orangeMetal.opacity(0.80),
+                        LinearGradient(
+                            colors: [
+                                Color(red: 1.00, green: 0.92, blue: 0.60),
+                                Color(red: 0.82, green: 0.64, blue: 0.20),
+                                Color(red: 1.00, green: 0.96, blue: 0.72)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ),
                         lineWidth: 1.4
                     )
             )
-            // Adds the orange glow behind the card.
+            // Adds the gold glow behind the card.
             .shadow(
-                color: Color.orange.opacity(0.18),
+                color: Color(red: 0.83, green: 0.69, blue: 0.22).opacity(0.18),
                 radius: 8
             )
     }

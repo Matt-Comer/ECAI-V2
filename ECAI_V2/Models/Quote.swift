@@ -4,11 +4,12 @@
 //
 //  Created by Matthew Comer on 2026-06-29.
 //
+
 import Foundation
 // Creates the model used to store one quote.
-struct Quote: Identifiable {
+struct Quote: Identifiable, Codable {
     // Creates a unique identifier for each quote.
-    let id = UUID()
+    var id = UUID()
     // Stores the customer name for the quote.
     var customerName: String
     // Stores the total quote amount.

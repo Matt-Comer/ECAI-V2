@@ -8,22 +8,22 @@
 import SwiftUI
 // Displays the More screen for additional Elite Contractor AI features.
 struct MoreView: View {
-// Stores the metallic orange border gradient.
+// Stores the metallic gold border gradient.
     private let borderGradient = LinearGradient(
         colors: [
-            Color(red: 1.00, green: 0.62, blue: 0.12),
-            .orange,
-            Color(red: 0.72, green: 0.28, blue: 0.02)
+            Color(red: 1.00, green: 0.84, blue: 0.38),
+            Color(red: 0.83, green: 0.69, blue: 0.22),
+            Color(red: 0.55, green: 0.40, blue: 0.08)
         ],
         startPoint: .topLeading,
         endPoint: .bottomTrailing
     )
-    // Stores the metallic orange title gradient.
+    // Stores the metallic gold title gradient.
     private let titleGradient = LinearGradient(
         colors: [
-            Color(red: 1.00, green: 0.70, blue: 0.18),
-            .orange,
-            Color(red: 1.00, green: 0.38, blue: 0.02)
+            Color(red: 1.00, green: 0.88, blue: 0.45),
+            Color(red: 0.83, green: 0.69, blue: 0.22),
+            Color(red: 0.67, green: 0.49, blue: 0.10)
         ],
         startPoint: .top,
         endPoint: .bottom
@@ -35,17 +35,15 @@ struct MoreView: View {
                 // Displays the black application background.
                 Color.black
                     .ignoresSafeArea()
-
                 // Allows the More screen to scroll.
                 ScrollView {
                     VStack(alignment: .leading, spacing: 22) {
                         // Displays the same header used by the other main pages.
                         brandHeader
-
                         // Displays the More screen hero.
                         ECAIHeroView(
                             imageName: "moreview_splashscreen-V1",
-                            title: "BUISNESS TOOLS",
+                            title: "BUSINESS TOOLS",
                             subtitle: "Revenue, AI, company information, and settings."
                         )
                     // Opens the Revenue screen.
@@ -96,7 +94,6 @@ struct MoreView: View {
             }
         }
     }
-
 // Creates the same E.C.A.I. header used by the other main screens.
     private var brandHeader: some View {
         ZStack(alignment: .topLeading) {
@@ -109,8 +106,7 @@ struct MoreView: View {
                         blue: 0.045
                     )
                 )
-
-            // Adds the metallic orange border.
+            // Adds the metallic gold border.
             RoundedRectangle(cornerRadius: 22)
                 .stroke(
                     borderGradient,
@@ -126,19 +122,16 @@ struct MoreView: View {
                 )
                 .padding(.leading, 16)
                 .padding(.top, 14)
-
             // Displays the social icons on the right.
             HStack(spacing: 5) {
                 Image("facebook")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 31, height: 31)
-
                 Image("LinkedInIcon")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 31, height: 31)
-
                 Image("x")
                     .resizable()
                     .scaledToFit()
@@ -150,7 +143,6 @@ struct MoreView: View {
             )
             .padding(.top, 22)
             .padding(.trailing, 18)
-
             // Displays the same centered title layout as the other pages.
             VStack(spacing: 5) {
                 Text("E.C.A.I.")
@@ -162,22 +154,15 @@ struct MoreView: View {
                     )
                     .foregroundStyle(titleGradient)
                     .shadow(
-                        color: .orange.opacity(0.55),
+                        color: Color(red: 0.83, green: 0.69, blue: 0.22).opacity(0.55),
                         radius: 8
                     )
-
                 // Displays the Business Tools initials.
                 Text("B.T.")
                     .font(.subheadline)
                     .fontWeight(.bold)
                     .tracking(1.4)
-                    .foregroundStyle(
-                        Color(
-                            red: 0.95,
-                            green: 0.67,
-                            blue: 0.20
-                        )
-                    )
+                    .foregroundStyle(titleGradient)
             }
             .frame(maxWidth: .infinity)
             .padding(.top, 50)
@@ -192,12 +177,11 @@ struct MoreView: View {
             y: 6
         )
         .shadow(
-            color: .orange.opacity(0.30),
+            color: Color(red: 0.83, green: 0.69, blue: 0.22).opacity(0.30),
             radius: 12
         )
     }
 }
-
 #Preview {
     MoreView()
 }

@@ -15,7 +15,6 @@ struct MoreCard: View {
     let title: String
     // Stores the smaller description displayed below the title.
     let subtitle: String
-
     // Displays the More screen navigation card.
     var body: some View {
         // Places the icon and information on one row.
@@ -23,23 +22,40 @@ struct MoreCard: View {
             // Displays the feature icon.
             Image(systemName: icon)
                 .font(.system(size: 26, weight: .bold))
-                .foregroundStyle(ECAITheme.metallicOrangeTop)
+                .foregroundStyle(
+                    LinearGradient(
+                        colors: [
+                            Color(red: 1.00, green: 0.88, blue: 0.45),
+                            Color(red: 0.83, green: 0.69, blue: 0.22),
+                            Color(red: 0.67, green: 0.49, blue: 0.10)
+                        ],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
                 .frame(width: 42)
-
             // Places the title and subtitle vertically.
             VStack(alignment: .leading, spacing: 5) {
                 // Displays the feature title.
                 Text(title)
                     .font(.headline)
                     .fontWeight(.bold)
-                    .foregroundStyle(.white)
-
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [
+                                Color(red: 1.00, green: 0.88, blue: 0.45),
+                                Color(red: 0.83, green: 0.69, blue: 0.22),
+                                Color(red: 0.67, green: 0.49, blue: 0.10)
+                            ],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
                 // Displays the feature description.
                 Text(subtitle)
                     .font(.caption)
-                    .foregroundStyle(.white.opacity(0.70))
+                    .foregroundStyle(ECAITheme.silver.opacity(0.70))
             }
-
             Spacer()
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -77,7 +93,6 @@ struct MoreCard: View {
         )
     }
 }
-
 #Preview {
     MoreCard(
         icon: "dollarsign.circle.fill",

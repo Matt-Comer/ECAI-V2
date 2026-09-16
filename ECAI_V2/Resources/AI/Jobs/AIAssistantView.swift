@@ -1,25 +1,27 @@
+
 //
 //  AIAssistantView.swift
 //  ECAI_V1
 //
 //  Created by Matthew Comer on 2026-06-29.
 //
+
 import SwiftUI
 // Identifies the working agent selected inside the E.C.A.I. Command Center.
 private enum ECAIWorkspace: String, Identifiable {
     // Opens the Customer Success Agent.
     case customer
-    // Opens the  Marketing Intelligence Agent.
+    // Opens the Marketing Intelligence Agent.
     case marketing
     // Opens the Project Intelligence Agent for material planning.
     case materials
-    // Opens the Project  Intelligence Agent for contract drafting.
+    // Opens the Project Intelligence Agent for contract drafting.
     case contract
     // Uses the workspace name as its stable SwiftUI identifier.
     var id: String {
         rawValue
     }
-    // Stores the  title displayed at the top of the workspace.
+    // Stores the title displayed at the top of the workspace.
     var title: String {
         // Returns the correct title for the selected workspace.
         switch self {
@@ -94,6 +96,18 @@ struct AIAssistantView: View {
     @State private var showQuoteSheet = false
     // Stores the additional E.C.A.I. agent workspace selected by the user.
     @State private var selectedWorkspace: ECAIWorkspace?
+    // Creates the metallic gold gradient.
+    private var goldGradient: LinearGradient {
+        LinearGradient(
+            colors: [
+                Color(red: 1.00, green: 0.88, blue: 0.45),
+                Color(red: 0.83, green: 0.69, blue: 0.22),
+                Color(red: 0.67, green: 0.49, blue: 0.10)
+            ],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
     var body: some View {
         // Creates the navigation system for the AI Assistant.
         NavigationStack {
@@ -123,7 +137,7 @@ struct AIAssistantView: View {
                         // Labels the working tool section.
                         Text("CHOOSE A TOOL")
                             .font(.system(size: 18, weight: .black))
-                            .foregroundStyle(.orange)
+                            .foregroundStyle(goldGradient)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         // Opens the Generate Quote screen.
                         Button {
@@ -139,8 +153,16 @@ struct AIAssistantView: View {
                             .foregroundStyle(.black)
                             .frame(maxWidth: .infinity)
                             .frame(height: 58)
-                            .background(Color.orange)
+                            .background(ECAITheme.orangeMetal)
                             .clipShape(RoundedRectangle(cornerRadius: 18))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 18)
+                                    .stroke(ECAITheme.orangeMetal, lineWidth: 1.5)
+                            )
+                            .shadow(
+                                color: ECAITheme.metallicOrange.opacity(0.30),
+                                radius: 8
+                            )
                         }
                         // Places the four supporting agents inside a compact two-column grid.
                         LazyVGrid(
@@ -160,19 +182,24 @@ struct AIAssistantView: View {
                                     // Displays the customer communication symbol.
                                     Image(systemName: "message.fill")
                                         .font(.system(size: 24, weight: .bold))
+                                        .foregroundStyle(goldGradient)
                                     // Displays the customer agent title.
                                     Text("Customer Follow-Up")
                                         .font(.system(size: 15, weight: .bold))
                                         .multilineTextAlignment(.center)
+                                        .foregroundStyle(goldGradient)
                                 }
-                                .foregroundStyle(.orange)
                                 .frame(maxWidth: .infinity)
                                 .frame(height: 92)
                                 .background(Color.black.opacity(0.72))
                                 .clipShape(RoundedRectangle(cornerRadius: 18))
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 18)
-                                        .stroke(Color.orange.opacity(0.85), lineWidth: 1.5)
+                                        .stroke(goldGradient, lineWidth: 1.5)
+                                )
+                                .shadow(
+                                    color: Color(red: 0.83, green: 0.69, blue: 0.22).opacity(0.18),
+                                    radius: 7
                                 )
                             }
                             // Opens the working Marketing Intelligence Agent.
@@ -185,19 +212,24 @@ struct AIAssistantView: View {
                                     // Displays the marketing symbol.
                                     Image(systemName: "megaphone.fill")
                                         .font(.system(size: 24, weight: .bold))
+                                        .foregroundStyle(goldGradient)
                                     // Displays the marketing agent title.
                                     Text("Marketing Ideas")
                                         .font(.system(size: 15, weight: .bold))
                                         .multilineTextAlignment(.center)
+                                        .foregroundStyle(goldGradient)
                                 }
-                                .foregroundStyle(.orange)
                                 .frame(maxWidth: .infinity)
                                 .frame(height: 92)
                                 .background(Color.black.opacity(0.72))
                                 .clipShape(RoundedRectangle(cornerRadius: 18))
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 18)
-                                        .stroke(Color.orange.opacity(0.85), lineWidth: 1.5)
+                                        .stroke(goldGradient, lineWidth: 1.5)
+                                )
+                                .shadow(
+                                    color: Color(red: 0.83, green: 0.69, blue: 0.22).opacity(0.18),
+                                    radius: 7
                                 )
                             }
                             // Opens the working Material Estimator.
@@ -210,19 +242,24 @@ struct AIAssistantView: View {
                                     // Displays the material planning symbol.
                                     Image(systemName: "hammer.fill")
                                         .font(.system(size: 24, weight: .bold))
+                                        .foregroundStyle(goldGradient)
                                     // Displays the material agent title.
                                     Text("Material Estimator")
                                         .font(.system(size: 15, weight: .bold))
                                         .multilineTextAlignment(.center)
+                                        .foregroundStyle(goldGradient)
                                 }
-                                .foregroundStyle(.orange)
                                 .frame(maxWidth: .infinity)
                                 .frame(height: 92)
                                 .background(Color.black.opacity(0.72))
                                 .clipShape(RoundedRectangle(cornerRadius: 18))
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 18)
-                                        .stroke(Color.orange.opacity(0.85), lineWidth: 1.5)
+                                        .stroke(goldGradient, lineWidth: 1.5)
+                                )
+                                .shadow(
+                                    color: Color(red: 0.83, green: 0.69, blue: 0.22).opacity(0.18),
+                                    radius: 7
                                 )
                             }
                             // Opens the working Contract Generator.
@@ -235,19 +272,24 @@ struct AIAssistantView: View {
                                     // Displays the contract symbol.
                                     Image(systemName: "doc.richtext.fill")
                                         .font(.system(size: 24, weight: .bold))
+                                        .foregroundStyle(goldGradient)
                                     // Displays the contract agent title.
                                     Text("Contract Generator")
                                         .font(.system(size: 15, weight: .bold))
                                         .multilineTextAlignment(.center)
+                                        .foregroundStyle(goldGradient)
                                 }
-                                .foregroundStyle(.orange)
                                 .frame(maxWidth: .infinity)
                                 .frame(height: 92)
                                 .background(Color.black.opacity(0.72))
                                 .clipShape(RoundedRectangle(cornerRadius: 18))
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 18)
-                                        .stroke(Color.orange.opacity(0.85), lineWidth: 1.5)
+                                        .stroke(goldGradient, lineWidth: 1.5)
+                                )
+                                .shadow(
+                                    color: Color(red: 0.83, green: 0.69, blue: 0.22).opacity(0.18),
+                                    radius: 7
                                 )
                             }
                         }
@@ -270,7 +312,7 @@ struct AIAssistantView: View {
                 GenerateQuoteView()
             }
             // Displays the selected working E.C.A.I. agent.
-            .sheet(
+            .fullScreenCover(
                 item: $selectedWorkspace
             ) { workspace in
                 // Opens one reusable agent workspace without changing the Command Center design.
@@ -295,6 +337,18 @@ private struct ECAIAgentWorkspaceView: View {
     @State private var response = ""
     // Stores whether the agent is currently generating a response.
     @State private var isGenerating = false
+    // Creates the metallic gold gradient.
+    private var goldGradient: LinearGradient {
+        LinearGradient(
+            colors: [
+                Color(red: 1.00, green: 0.88, blue: 0.45),
+                Color(red: 0.83, green: 0.69, blue: 0.22),
+                Color(red: 0.67, green: 0.49, blue: 0.10)
+            ],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
     // Builds the complete E.C.A.I. agent workspace.
     var body: some View {
         // Creates navigation for the workspace toolbar.
@@ -316,11 +370,11 @@ private struct ECAIAgentWorkspaceView: View {
                             systemName: workspace.icon
                         )
                         .font(.system(size: 34, weight: .bold))
-                        .foregroundStyle(.orange)
+                        .foregroundStyle(goldGradient)
                         // Displays the selected workspace title.
                         Text(workspace.title)
                             .font(.system(size: 28, weight: .black))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(goldGradient)
                         // Displays the information required by the selected agent.
                         Text(workspace.instructions)
                             .font(.subheadline)
@@ -350,9 +404,13 @@ private struct ECAIAgentWorkspaceView: View {
                                 cornerRadius: 16
                             )
                             .stroke(
-                                Color.orange.opacity(0.85),
+                                goldGradient,
                                 lineWidth: 1.5
                             )
+                        )
+                        .shadow(
+                            color: Color(red: 0.83, green: 0.69, blue: 0.22).opacity(0.18),
+                            radius: 7
                         )
                         // Starts the selected E.C.A.I. agent.
                         Button {
@@ -375,16 +433,14 @@ private struct ECAIAgentWorkspaceView: View {
                                 )
                                 .fontWeight(.black)
                             }
+                            .foregroundStyle(.black)
                             .frame(maxWidth: .infinity)
                             .padding()
+                            .background(goldGradient)
+                            .clipShape(RoundedRectangle(cornerRadius: 14))
                         }
-                        .buttonStyle(.borderedProminent)
-                        .tint(.orange)
-                        .disabled(
-                            input.trimmingCharacters(
-                                in: .whitespacesAndNewlines
-                            ).isEmpty || isGenerating
-                        )
+                        // Displays the completed agent heading.
+                        .disabled(isGenerating)
                         // Checks whether the agent created a response.
                         if !response.isEmpty {
                             // Displays the generated response inside an E.C.A.I. card.
@@ -392,13 +448,12 @@ private struct ECAIAgentWorkspaceView: View {
                                 alignment: .leading,
                                 spacing: 14
                             ) {
-                                // Displays the completed agent heading.
                                 Label(
                                     "E.C.A.I. Response",
                                     systemImage: "sparkles"
                                 )
                                 .font(.headline)
-                                .foregroundStyle(.orange)
+                                .foregroundStyle(goldGradient)
                                 // Displays the generated agent content.
                                 Text(response)
                                     .textSelection(.enabled)
@@ -417,7 +472,9 @@ private struct ECAIAgentWorkspaceView: View {
                                     .padding(.vertical, 10)
                                 }
                                 .buttonStyle(.bordered)
-                                .tint(.orange)
+                                .tint(
+                                    Color(red: 0.83, green: 0.69, blue: 0.22)
+                                )
                             }
                             .frame(
                                 maxWidth: .infinity,
@@ -441,9 +498,13 @@ private struct ECAIAgentWorkspaceView: View {
                                     cornerRadius: 18
                                 )
                                 .stroke(
-                                    Color.orange.opacity(0.85),
+                                    goldGradient,
                                     lineWidth: 1.5
                                 )
+                            )
+                            .shadow(
+                                color: Color(red: 0.83, green: 0.69, blue: 0.22).opacity(0.18),
+                                radius: 7
                             )
                         }
                     }
@@ -451,6 +512,9 @@ private struct ECAIAgentWorkspaceView: View {
                     .padding(.bottom, 30)
                 }
             }
+            // Forces the navigation area above the workspace to stay black.
+            .toolbarBackground(Color.black, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
             // Displays the workspace toolbar.
             .toolbar {
                 // Creates the Done button.
@@ -459,9 +523,12 @@ private struct ECAIAgentWorkspaceView: View {
                 ) {
                     // Closes the selected workspace.
                     Button("Done") {
-                        // Dismisses the current sheet.
+                        // Dismisses the current workspace.
                         dismiss()
                     }
+                    .tint(
+                        Color(red: 0.83, green: 0.69, blue: 0.22)
+                    )
                 }
             }
         }

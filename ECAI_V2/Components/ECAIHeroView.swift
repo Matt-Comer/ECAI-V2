@@ -4,7 +4,7 @@
 //  ECAI_V2
 //
 //  Created by  Matthew Comer on 2026-07-10.
-//
+////
 import SwiftUI
 // Creates one  reusable hero image for the main E.C.A.I. screens.
 struct ECAIHeroView: View {
@@ -29,7 +29,7 @@ struct ECAIHeroView: View {
             LinearGradient(
                 colors: [
                     Color.clear,
-                    Color.orange.opacity(0.12),
+                    Color(red: 0.83, green: 0.69, blue: 0.22).opacity(0.12),
                     Color.black.opacity(0.94)
                 ],
                 startPoint: .top,
@@ -38,10 +38,50 @@ struct ECAIHeroView: View {
             // Displays  the hero title and description.
             VStack(alignment: .leading, spacing: 5) {
                 // Displays the hero title.
-                ECAIMetallicTitle(
-                    text: title.uppercased(),
-                    size: 25
-                )
+                if title.uppercased() == "COMMAND CENTER" {
+                    Text(title.uppercased())
+                        .font(.system(size: 25, weight: .black))
+                        .foregroundStyle(
+                            LinearGradient(
+                                colors: [
+                                    Color(red: 1.00, green: 0.88, blue: 0.45),
+                                    Color(red: 0.83, green: 0.69, blue: 0.22),
+                                    Color(red: 0.67, green: 0.49, blue: 0.10)
+                                ],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                        )
+                } else if title.uppercased() == "BUSINESS TOOLS" {
+                    Text(title.uppercased())
+                        .font(.system(size: 25, weight: .black))
+                        .foregroundStyle(
+                            LinearGradient(
+                                colors: [
+                                    Color(red: 1.00, green: 0.88, blue: 0.45),
+                                    Color(red: 0.83, green: 0.69, blue: 0.22),
+                                    Color(red: 1.00, green: 0.32, blue: 0.05),
+                                    Color(red: 0.83, green: 0.69, blue: 0.22),
+                                    Color(red: 1.00, green: 0.88, blue: 0.45),
+                                    Color(red: 0.83, green: 0.69, blue: 0.22),
+                                    Color(red: 1.00, green: 0.32, blue: 0.05),
+                                    Color(red: 0.83, green: 0.69, blue: 0.22),
+                                    Color(red: 1.00, green: 0.88, blue: 0.45)
+                                ],
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                        .shadow(
+                            color: Color(red: 1.00, green: 0.30, blue: 0.04).opacity(0.22),
+                            radius: 1.5
+                        )
+                } else {
+                    ECAIMetallicTitle(
+                        text: title.uppercased(),
+                        size: 25
+                    )
+                }
                 // Displays the hero description.
                 Text(subtitle)
                     .font(.subheadline)
@@ -60,13 +100,21 @@ struct ECAIHeroView: View {
         .overlay(
             RoundedRectangle(cornerRadius: 22)
                 .stroke(
-                    Color.orange.opacity(0.92),
+                    LinearGradient(
+                        colors: [
+                            Color(red: 1.00, green: 0.84, blue: 0.38),
+                            Color(red: 0.83, green: 0.69, blue: 0.22),
+                            Color(red: 0.55, green: 0.40, blue: 0.08)
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    ),
                     lineWidth: 2
                 )
         )
         // Adds the orange glow around the hero.
         .shadow(
-            color: .orange.opacity(0.28),
+            color: Color(red: 0.83, green: 0.69, blue: 0.22).opacity(0.28),
             radius: 10
         )
     }

@@ -31,9 +31,11 @@ struct AuthenticationGateView: View {
                     // Displays the black ECAI background.
                     Color.black
                         .ignoresSafeArea()
-                    // Displays an orange Firebase loading indicator.
+                    // Displays a gold Firebase loading indicator.
                     ProgressView("Connecting to E.C.A.I.")
-                        .tint(.orange)
+                        .tint(
+                            Color(red: 0.83, green: 0.69, blue: 0.22)
+                        )
                         .foregroundStyle(.white)
                 }
             } else if authService.currentUser == nil {
@@ -85,22 +87,28 @@ struct AuthenticationView: View {
                         .scaledToFit()
                         .frame(width: 130, height: 130)
                         .clipShape(RoundedRectangle(cornerRadius: 24))
-                        .shadow(color: .orange.opacity(0.40), radius: 16)
+                        .shadow(
+                            color: Color(red: 0.83, green: 0.69, blue: 0.22).opacity(0.40),
+                            radius: 16
+                        )
                     // Displays the Elite Contractor AI application name.
                     Text("E.C.A.I.")
                         .font(.system(size: 38, weight: .black))
                         .foregroundStyle(
                             LinearGradient(
                                 colors: [
-                                    Color(red: 1.00, green: 0.70, blue: 0.18),
-                                    Color.orange,
-                                    Color(red: 1.00, green: 0.38, blue: 0.02)
+                                    Color(red: 1.00, green: 0.88, blue: 0.45),
+                                    Color(red: 0.83, green: 0.69, blue: 0.22),
+                                    Color(red: 0.67, green: 0.49, blue: 0.10)
                                 ],
                                 startPoint: .top,
                                 endPoint: .bottom
                             )
                         )
-                        .shadow(color: .orange.opacity(0.55), radius: 8)
+                        .shadow(
+                            color: Color(red: 0.83, green: 0.69, blue: 0.22).opacity(0.55),
+                            radius: 8
+                        )
                     // Displays the secure-access description.
                     Text("Secure Business Command Access")
                         .font(.subheadline)
@@ -119,7 +127,9 @@ struct AuthenticationView: View {
                         }
                     }
                     .pickerStyle(.segmented)
-                    .tint(.orange)
+                    .tint(
+                        Color(red: 0.83, green: 0.69, blue: 0.22)
+                    )
                     // Displays the Firebase Authentication form card.
                     VStack(spacing: 16) {
                         // Collects the user's Firebase email address.
@@ -200,7 +210,17 @@ struct AuthenticationView: View {
                         }
                         .buttonStyle(.plain)
                         .foregroundStyle(.black)
-                        .background(Color.orange)
+                        .background(
+                            LinearGradient(
+                                colors: [
+                                    Color(red: 1.00, green: 0.88, blue: 0.45),
+                                    Color(red: 0.83, green: 0.69, blue: 0.22),
+                                    Color(red: 0.67, green: 0.49, blue: 0.10)
+                                ],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
                         .clipShape(RoundedRectangle(cornerRadius: 14))
                         .disabled(authService.isWorking)
                         // Displays password recovery only on the Login form.
@@ -214,7 +234,9 @@ struct AuthenticationView: View {
                             }
                             .font(.subheadline)
                             .fontWeight(.bold)
-                            .foregroundStyle(.orange)
+                            .foregroundStyle(
+                                Color(red: 0.83, green: 0.69, blue: 0.22)
+                            )
                             .disabled(authService.isWorking)
                         }
                     }
@@ -223,9 +245,23 @@ struct AuthenticationView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 22))
                     .overlay(
                         RoundedRectangle(cornerRadius: 22)
-                            .stroke(Color.orange.opacity(0.90), lineWidth: 2)
+                            .stroke(
+                                LinearGradient(
+                                    colors: [
+                                        Color(red: 1.00, green: 0.92, blue: 0.60),
+                                        Color(red: 0.82, green: 0.64, blue: 0.20),
+                                        Color(red: 1.00, green: 0.96, blue: 0.72)
+                                    ],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                ),
+                                lineWidth: 2
+                            )
                     )
-                    .shadow(color: .orange.opacity(0.25), radius: 12)
+                    .shadow(
+                        color: Color(red: 0.83, green: 0.69, blue: 0.22).opacity(0.25),
+                        radius: 12
+                    )
                 }
                 .padding(.horizontal, 22)
                 .padding(.top, 40)
@@ -299,7 +335,7 @@ struct AuthenticationView: View {
 }
 // Creates the reusable ECAI Authentication text-field appearance.
 private extension View {
-    // Applies the dark field background, white text, and orange border.
+    // Applies the dark field background, white text, and gold border.
     func authenticationField() -> some View {
         // Applies every Authentication field style to the selected view.
         self
@@ -310,7 +346,18 @@ private extension View {
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.orange.opacity(0.65), lineWidth: 1.3)
+                    .stroke(
+                        LinearGradient(
+                            colors: [
+                                Color(red: 1.00, green: 0.92, blue: 0.60),
+                                Color(red: 0.82, green: 0.64, blue: 0.20),
+                                Color(red: 1.00, green: 0.96, blue: 0.72)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ),
+                        lineWidth: 1.3
+                    )
             )
     }
 }

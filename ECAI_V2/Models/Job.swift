@@ -6,13 +6,13 @@
 //
 import Foundation
 // Job model for storing job information
-struct Job: Identifiable {
+struct Job: Identifiable, Codable {
 // Unique ID for each job
-    let id = UUID()
+    var id = UUID()
 // Customer name
     var customerName: String
 // Type of work being completed
     var jobType: String
-// Current job  status
+// Current job status
     var status: String
 }

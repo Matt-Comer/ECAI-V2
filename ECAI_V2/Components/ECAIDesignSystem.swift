@@ -8,11 +8,11 @@ import SwiftUI
 // Stores the locked Elite Contractor AI colour system used throughout the application.
 enum ECAITheme {
     // Stores the brightest metallic orange highlight colour.
-    static let metallicOrangeTop = Color(red: 1.00, green: 0.72, blue: 0.20)
+    static let metallicOrangeTop = Color(red: 1.00, green: 0.48, blue: 0.12)
     // Stores the primary metallic orange brand colour.
-    static let metallicOrange = Color(red: 1.00, green: 0.46, blue: 0.02)
+    static let metallicOrange = Color(red: 0.95, green: 0.30, blue: 0.05)
 // Stores the darkest metallic orange shadow colour.
-    static let metallicOrangeBottom = Color(red: 0.72, green: 0.22, blue: 0.00)
+    static let metallicOrangeBottom = Color(red: 0.55, green: 0.12, blue: 0.02)
     // Stores  the brushed silver accent colour.
     static let silver = Color(red: 0.79, green: 0.82, blue: 0.86)
     // Stores  the matte graphite background colour.
@@ -101,7 +101,7 @@ struct ECAIBrandHeader: View {
                 .resizable()
             // Keeps the complete logo visible.
                 .scaledToFit()
-                 // Sets the displayed logo size.
+                // Sets the displayed logo size.
                 .frame(width: 72, height: 72)
                 // Adds a matte black background behind the logo.
                 .background(Color.black.opacity(0.90))
@@ -134,7 +134,7 @@ struct ECAIBrandHeader: View {
                     .tracking(1.4)
                     // Applies the gold orange colour.
                     .foregroundStyle(
-                        Color(red: 0.95, green: 0.67, blue: 0.20)
+                        Color(red: 0.83, green: 0.69, blue: 0.22)
                     )
                     // Centers the initials below the title.
                     .frame(maxWidth: .infinity, alignment: .center)

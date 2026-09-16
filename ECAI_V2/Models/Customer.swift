@@ -6,13 +6,13 @@
 //
 import Foundation
 // Creates the model used to store one customer's information.
-struct Customer:Identifiable {
+struct Customer: Identifiable, Codable {
     // Creates a unique identifier so SwiftUI can recognize each customer.
-    let id=UUID()
+    var id = UUID()
     // Stores the customer's full name.
-    var name:String
+    var name: String
     // Stores the customer's phone number.
-    var phone:String
+    var phone: String
     // Stores the customer's address or job location.
-    var address:String
+    var address: String
 }

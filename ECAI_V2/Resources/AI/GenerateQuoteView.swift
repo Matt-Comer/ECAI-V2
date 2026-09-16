@@ -19,6 +19,16 @@ struct GenerateQuoteView: View {
     @State private var notes = ""
     // Stores the AI generated quote.
     @State private var quoteText = ""
+    // Stores the metallic gold gradient.
+    private let goldGradient = LinearGradient(
+        colors: [
+            Color(red: 1.00, green: 0.92, blue: 0.60),
+            Color(red: 0.82, green: 0.64, blue: 0.20),
+            Color(red: 1.00, green: 0.96, blue: 0.72)
+        ],
+        startPoint: .topLeading,
+        endPoint: .bottomTrailing
+    )
     var body: some View {
         // Creates the navigation system for this screen.
         NavigationStack {
@@ -46,29 +56,113 @@ struct GenerateQuoteView: View {
                             "Job Type",
                             text: $jobType
                         )
-                   // Uses the standard rounded text field style.
-                        .textFieldStyle(.roundedBorder)
+                        .padding(14)
+                        .background(
+                            Color(
+                                red: 0.08,
+                                green: 0.08,
+                                blue: 0.09
+                            )
+                        )
+                        .foregroundStyle(.white)
+                        .clipShape(
+                            RoundedRectangle(cornerRadius: 14)
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 14)
+                                .stroke(
+                                    goldGradient,
+                                    lineWidth: 1.5
+                                )
+                        )
+                        .shadow(
+                            color: Color.yellow.opacity(0.14),
+                            radius: 6
+                        )
                         // Allows the user to enter the project size.
                         TextField(
                             "Project Size",
                             text: $size
                         )
-                        // Uses the standard rounded text field style.
-                        .textFieldStyle(.roundedBorder)
+                        .padding(14)
+                        .background(
+                            Color(
+                                red: 0.08,
+                                green: 0.08,
+                                blue: 0.09
+                            )
+                        )
+                        .foregroundStyle(.white)
+                        .clipShape(
+                            RoundedRectangle(cornerRadius: 14)
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 14)
+                                .stroke(
+                                    goldGradient,
+                                    lineWidth: 1.5
+                                )
+                        )
+                        .shadow(
+                            color: Color.yellow.opacity(0.14),
+                            radius: 6
+                        )
                         // Allows the user to enter the materials.
                         TextField(
                             "Materials",
                             text: $materials
                         )
-                        // Uses the standard rounded text field style.
-                        .textFieldStyle(.roundedBorder)
+                        .padding(14)
+                        .background(
+                            Color(
+                                red: 0.08,
+                                green: 0.08,
+                                blue: 0.09
+                            )
+                        )
+                        .foregroundStyle(.white)
+                        .clipShape(
+                            RoundedRectangle(cornerRadius: 14)
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 14)
+                                .stroke(
+                                    goldGradient,
+                                    lineWidth: 1.5
+                                )
+                        )
+                        .shadow(
+                            color: Color.yellow.opacity(0.14),
+                            radius: 6
+                        )
                         // Allows the user to enter additional notes.
                         TextField(
                             "Additional Notes",
                             text: $notes
                         )
-                        // Uses the standard rounded text field style.
-                        .textFieldStyle(.roundedBorder)
+                        .padding(14)
+                        .background(
+                            Color(
+                                red: 0.08,
+                                green: 0.08,
+                                blue: 0.09
+                            )
+                        )
+                        .foregroundStyle(.white)
+                        .clipShape(
+                            RoundedRectangle(cornerRadius: 14)
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 14)
+                                .stroke(
+                                    goldGradient,
+                                    lineWidth: 1.5
+                                )
+                        )
+                        .shadow(
+                            color: Color.yellow.opacity(0.14),
+                            radius: 6
+                        )
                         // Creates the Generate Quote button.
                         Button {
                             // Builds the project information for the Quote Intelligence Agent.
@@ -92,11 +186,25 @@ struct GenerateQuoteView: View {
                                 systemImage: "sparkles"
                             )
                             .fontWeight(.bold)
+                            .foregroundStyle(.black)
                             .frame(maxWidth: .infinity)
                             .padding()
+                            .background(ECAITheme.orangeMetal)
+                            .clipShape(
+                                RoundedRectangle(cornerRadius: 14)
+                            )
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 14)
+                                    .stroke(
+                                        ECAITheme.orangeMetal,
+                                        lineWidth: 1.5
+                                    )
+                            )
+                            .shadow(
+                                color: ECAITheme.metallicOrange.opacity(0.30),
+                                radius: 8
+                            )
                         }
-                        // Uses the prominent system button style.
-                        .buttonStyle(.borderedProminent)
                         // Displays the generated quote only after it has been created.
                         if !quoteText.isEmpty {
                             // Creates the generated quote card.
@@ -107,9 +215,9 @@ struct GenerateQuoteView: View {
                                 // Displays the AI icon.
                                 Image(systemName: "sparkles")
                                     .font(.title2)
-                                    .foregroundStyle(.orange)
+                                    .foregroundStyle(ECAITheme.orangeMetal)
                                 // Displays the generated quote.
-                                Text(quoteText)
+                                Text(LocalizedStringKey(quoteText))
                                     .foregroundStyle(.white)
                             }
                             // Allows the card to fill the available width.
@@ -121,7 +229,6 @@ struct GenerateQuoteView: View {
                             .padding(18)
                             // Creates the premium card background.
                             .background(
-
                                 Color(
                                     red: 0.08,
                                     green: 0.08,
@@ -136,34 +243,11 @@ struct GenerateQuoteView: View {
                             )
                             // Adds a metallic gold border.
                             .overlay(
-
                                 RoundedRectangle(
                                     cornerRadius: 18
                                 )
                                 .stroke(
-                                    LinearGradient(
-                                        colors: [
-
-                                            Color(
-                                                red: 1.00,
-                                                green: 0.92,
-                                                blue: 0.60
-                                            ),
-                                            Color(
-                                                red: 0.82,
-                                                green: 0.64,
-                                                blue: 0.20
-                                            ),
-                                            Color(
-                                                red: 1.00,
-                                                green: 0.96,
-                                                blue: 0.72
-                                            )
-                                        ],
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    ),
-
+                                    goldGradient,
                                     lineWidth: 1.5
                                 )
                             )
@@ -174,7 +258,6 @@ struct GenerateQuoteView: View {
                                 x: 0,
                                 y: 6
                             )
-
                 // Adds a soft gold glow around the card.
                             .shadow(
                                 color: Color.yellow.opacity(0.16),
@@ -188,7 +271,6 @@ struct GenerateQuoteView: View {
                     .padding()
                 }
             }
-
         // Displays the toolbar.
             .toolbar {
             // Creates the Done button.
@@ -199,21 +281,17 @@ struct GenerateQuoteView: View {
                     Button("Done") {
                         // Dismisses the sheet.
                         dismiss()
-
                     }
-
+                    .tint(
+                        Color(red: 0.83, green: 0.69, blue: 0.22)
+                    )
                 }
-
             }
-
         }
-
     }
-
 }
 // Displays the Generate Quote screen inside Xcode.
 #Preview {
     // Creates a preview of the Generate Quote screen.
     GenerateQuoteView()
-
 }

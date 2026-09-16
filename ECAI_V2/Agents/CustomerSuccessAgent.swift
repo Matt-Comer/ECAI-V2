@@ -16,10 +16,12 @@ struct CustomerSuccessAgent: ECAIAgent {
         from input: String
     ) -> String {
         // Removes extra spaces from the  beginning and end of the input.
-        let cleanedInput = input.trimmingCharacters(
-            in: .whitespacesAndNewlines
-        )
-        // Checks whether the user entered customer information.
+        let cleanedInput = input
+            .replacingOccurrences(
+                of: "Create a professional customer follow-up message using these details:",
+                with: ""
+            )
+            .trimmingCharacters(in: .whitespacesAndNewlines)        // Checks whether the user entered customer information.
         if cleanedInput.isEmpty {
             return """
             Please enter the customer name, project details, and the type of message you need.
