@@ -5,23 +5,22 @@
 //
 //  Created by Matthew Comer on 2026-06-29.
 //
-
 import SwiftUI
 // Identifies the working agent selected inside the E.C.A.I. Command Center.
 private enum ECAIWorkspace: String, Identifiable {
-    // Opens the Customer Success Agent.
+// Opens the Customer Success Agent.
     case customer
-    // Opens the Marketing Intelligence Agent.
+// Opens the Marketing Intelligence Agent.
     case marketing
-    // Opens the Project Intelligence Agent for material planning.
+// Opens the Project Intelligence Agent for material planning.
     case materials
-    // Opens the Project Intelligence Agent for contract drafting.
+// Opens the Project Intelligence Agent for contract drafting.
     case contract
-    // Uses the workspace name as its stable SwiftUI identifier.
+// Uses the workspace name as its stable  SwiftUI identifier.
     var id: String {
         rawValue
     }
-    // Stores the title displayed at the top of the workspace.
+// Stores the title displayed at the top of the workspace.
     var title: String {
         // Returns the correct title for the selected workspace.
         switch self {
@@ -35,7 +34,7 @@ private enum ECAIWorkspace: String, Identifiable {
             return "CONTRACT GENERATOR"
         }
     }
-    // Stores the existing E.C.A.I. agent used by the workspace.
+// Stores the existing E.C.A.I. agent used by the workspace.
     var agentName: String {
         // Routes every workspace to an existing agent.
         switch self {
@@ -61,7 +60,7 @@ private enum ECAIWorkspace: String, Identifiable {
             return "Enter the customer, project scope, price, payment schedule, dates, and warranty."
         }
     }
-    // Stores the task instruction added before the user's information.
+// Stores the task instruction   added before the user's information.
     var requestPrefix: String {
         // Returns the correct task for Firebase AI.
         switch self {
@@ -122,29 +121,31 @@ struct AIAssistantView: View {
                 Color.black
                     .opacity(0.38)
                     .ignoresSafeArea()
-                // Allows the complete Command Center to scroll above the tab bar.
+                // Allows the complete Command  Center to scroll above the tab bar.
                 ScrollView {
-                    // Places the single header and compact tool area vertically.
+                    // Places the single header and  compact tool area vertically.
                     VStack(
                         spacing: 16
                     ) {
-                        // Uses one existing E.C.A.I. hero instead of three repeated introductions.
+                        // Uses one existing E.C.A.I.  hero instead of three repeated introductions.
                         ECAIHeroView(
                             imageName: "ECAI-splashscreen-V10",
                             title: "COMMAND CENTER",
                             subtitle: "Quotes, customers, marketing, and projects."
                         )
-                        // Labels the working tool section.
+
+                        // Labels the working  tool section.
                         Text("CHOOSE A TOOL")
                             .font(.system(size: 18, weight: .black))
                             .foregroundStyle(goldGradient)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                        // Opens the Generate Quote screen.
+
+                // Opens the Generate Quote screen.
                         Button {
                             // Displays the Generate Quote sheet.
                             showQuoteSheet = true
                         } label: {
-                            // Creates the primary Generate Quote control.
+                        // Creates the primary Generate Quote control.
                             Label(
                                 "Generate Quote",
                                 systemImage: "doc.text.fill"
@@ -153,7 +154,7 @@ struct AIAssistantView: View {
                             .foregroundStyle(.black)
                             .frame(maxWidth: .infinity)
                             .frame(height: 58)
-                            .background(ECAITheme.orangeMetal)
+                            .background(goldGradient)
                             .clipShape(RoundedRectangle(cornerRadius: 18))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 18)
@@ -164,7 +165,7 @@ struct AIAssistantView: View {
                                 radius: 8
                             )
                         }
-                        // Places the four supporting agents inside a compact two-column grid.
+                    // Places the four supporting agents inside a compact two-column grid.
                         LazyVGrid(
                             columns: [
                                 GridItem(.flexible(), spacing: 12),
@@ -172,14 +173,14 @@ struct AIAssistantView: View {
                             ],
                             spacing: 12
                         ) {
-                            // Opens the working Customer Success Agent.
+                    // Opens the working Customer Success Agent.
                             Button {
-                                // Opens the Customer Success Agent workspace.
+                            // Opens the Customer Success Agent workspace.
                                 selectedWorkspace = .customer
                             } label: {
-                                // Creates the compact Customer Follow-Up control.
+                                // Creates the compact  Customer Follow-Up control.
                                 VStack(spacing: 8) {
-                                    // Displays the customer communication symbol.
+                                    // Displays the customer  communication symbol.
                                     Image(systemName: "message.fill")
                                         .font(.system(size: 24, weight: .bold))
                                         .foregroundStyle(goldGradient)
@@ -202,18 +203,19 @@ struct AIAssistantView: View {
                                     radius: 7
                                 )
                             }
-                            // Opens the working Marketing Intelligence Agent.
+
+                    // Opens the working Marketing Intelligence Agent.
                             Button {
                                 // Opens the Marketing Intelligence Agent workspace.
                                 selectedWorkspace = .marketing
                             } label: {
-                                // Creates the compact Marketing Ideas control.
+                                // Creates the compact Marketing  Ideas control.
                                 VStack(spacing: 8) {
                                     // Displays the marketing symbol.
                                     Image(systemName: "megaphone.fill")
                                         .font(.system(size: 24, weight: .bold))
                                         .foregroundStyle(goldGradient)
-                                    // Displays the marketing agent title.
+                                // Displays the marketing agent title.
                                     Text("Marketing Ideas")
                                         .font(.system(size: 15, weight: .bold))
                                         .multilineTextAlignment(.center)
@@ -232,12 +234,13 @@ struct AIAssistantView: View {
                                     radius: 7
                                 )
                             }
-                            // Opens the working Material Estimator.
+
+                    // Opens the working Material Estimator.
                             Button {
                                 // Opens the Project Intelligence material workspace.
                                 selectedWorkspace = .materials
                             } label: {
-                                // Creates the compact Material Estimator control.
+                                // Creates the compact  Material Estimator control.
                                 VStack(spacing: 8) {
                                     // Displays the material planning symbol.
                                     Image(systemName: "hammer.fill")
@@ -262,7 +265,8 @@ struct AIAssistantView: View {
                                     radius: 7
                                 )
                             }
-                            // Opens the working Contract Generator.
+
+                    // Opens the working Contract Generator.
                             Button {
                                 // Opens the Project Intelligence contract workspace.
                                 selectedWorkspace = .contract
@@ -294,24 +298,24 @@ struct AIAssistantView: View {
                             }
                         }
                     }
-                    // Adds space around the simplified interface.
+                    // Adds space around the simplified  interface.
                     .padding(.horizontal, 16)
                     // Keeps the header below the device safe area.
                     .padding(.top, 12)
                     // Keeps the final row above the permanent tab bar.
                     .padding(.bottom, 120)
                 }
-                // Hides the scroll indicator for a cleaner Command Center.
+                // Hides the scroll  indicator for a cleaner Command Center.
                 .scrollIndicators(.hidden)
             }
             // Displays the Generate Quote screen.
             .sheet(
                 isPresented: $showQuoteSheet
             ) {
-                // Opens the Generate Quote screen.
+            // Opens the Generate Quote screen.
                 GenerateQuoteView()
             }
-            // Displays the selected working E.C.A.I. agent.
+            // Displays the selected  working E.C.A.I. agent.
             .fullScreenCover(
                 item: $selectedWorkspace
             ) { workspace in
@@ -323,6 +327,7 @@ struct AIAssistantView: View {
         }
     }
 }
+
 // Displays one reusable working screen for Customer, Marketing, Material, or Contract intelligence.
 private struct ECAIAgentWorkspaceView: View {
     // Allows the Done button to close the selected workspace.
@@ -335,8 +340,9 @@ private struct ECAIAgentWorkspaceView: View {
     @State private var input = ""
     // Stores the response returned by Firebase AI or the local fallback agent.
     @State private var response = ""
-    // Stores whether the agent is currently generating a response.
+    // Stores whether  the agent is currently generating a response.
     @State private var isGenerating = false
+
     // Creates the metallic gold gradient.
     private var goldGradient: LinearGradient {
         LinearGradient(
@@ -349,6 +355,7 @@ private struct ECAIAgentWorkspaceView: View {
             endPoint: .bottomTrailing
         )
     }
+
     // Builds the complete E.C.A.I. agent workspace.
     var body: some View {
         // Creates navigation for the workspace toolbar.
@@ -358,7 +365,8 @@ private struct ECAIAgentWorkspaceView: View {
                 // Displays the black application background.
                 Color.black
                     .ignoresSafeArea()
-                // Allows long agent results to scroll.
+
+                // Allows  long agent results to scroll.
                 ScrollView {
                     // Places the workspace controls and result vertically.
                     VStack(
@@ -371,14 +379,17 @@ private struct ECAIAgentWorkspaceView: View {
                         )
                         .font(.system(size: 34, weight: .bold))
                         .foregroundStyle(goldGradient)
+
                         // Displays the selected workspace title.
                         Text(workspace.title)
                             .font(.system(size: 28, weight: .black))
                             .foregroundStyle(goldGradient)
+
                         // Displays the information required by the selected agent.
                         Text(workspace.instructions)
                             .font(.subheadline)
                             .foregroundStyle(.white.opacity(0.78))
+
                         // Allows the user to enter the complete agent request.
                         TextEditor(
                             text: $input
@@ -412,22 +423,24 @@ private struct ECAIAgentWorkspaceView: View {
                             color: Color(red: 0.83, green: 0.69, blue: 0.22).opacity(0.18),
                             radius: 7
                         )
-                        // Starts the selected E.C.A.I. agent.
+
+                        // Starts the selected  E.C.A.I. agent.
                         Button {
                             // Runs the Firebase AI request without freezing the interface.
                             Task {
                                 await generateResponse()
                             }
                         } label: {
-                            // Displays progress or the Generate button title.
+                        // Displays progress or the Generate button title.
                             HStack {
-                                // Checks whether the agent is currently working.
+                        // Checks whether the agent is currently working.
                                 if isGenerating {
-                                    // Displays the working indicator.
+                                // Displays the working indicator.
                                     ProgressView()
                                         .tint(.black)
                                 }
-                                // Displays the agent action.
+
+                            // Displays the agent action.
                                 Text(
                                     isGenerating ? "E.C.A.I. Working..." : "Generate"
                                 )
@@ -439,9 +452,10 @@ private struct ECAIAgentWorkspaceView: View {
                             .background(goldGradient)
                             .clipShape(RoundedRectangle(cornerRadius: 14))
                         }
-                        // Displays the completed agent heading.
+                // Displays the completed agent heading.
                         .disabled(isGenerating)
-                        // Checks whether the agent created a response.
+
+                    //  Checks   whether the agent created a response.
                         if !response.isEmpty {
                             // Displays the generated response inside an E.C.A.I. card.
                             VStack(
@@ -454,11 +468,13 @@ private struct ECAIAgentWorkspaceView: View {
                                 )
                                 .font(.headline)
                                 .foregroundStyle(goldGradient)
-                                // Displays the generated agent content.
+
+                            // Displays the generated agent content.
                                 Text(response)
                                     .textSelection(.enabled)
                                     .foregroundStyle(.white)
-                                // Allows the completed response to be shared with another application.
+
+                            // Allows the completed  response to be shared with another application.
                                 ShareLink(
                                     item: response
                                 ) {
@@ -515,13 +531,13 @@ private struct ECAIAgentWorkspaceView: View {
             // Forces the navigation area above the workspace to stay black.
             .toolbarBackground(Color.black, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
-            // Displays the workspace toolbar.
+        // Displays the workspace  toolbar.
             .toolbar {
-                // Creates the Done button.
+            // Creates the Done button.
                 ToolbarItem(
                     placement: .topBarTrailing
                 ) {
-                    // Closes the selected workspace.
+                // Closes the selected workspace.
                     Button("Done") {
                         // Dismisses the current workspace.
                         dismiss()
@@ -533,18 +549,19 @@ private struct ECAIAgentWorkspaceView: View {
             }
         }
     }
-    // Sends the workspace request through Firebase AI Logic.
+
+// Sends the workspace request through  Firebase AI Logic.
     private func generateResponse() async {
         // Shows that the selected agent is working.
         isGenerating = true
-        // Clears the previous response before a new request begins.
+    // Clears the previous response before a new request begins.
         response = ""
-        // Builds the complete request for the selected workspace.
+    // Builds the complete request for the selected workspace.
         let completeRequest = """
         \(workspace.requestPrefix)
         \(input)
         """
-        // Requests a live response with the local agent kept as the free fallback.
+    // Requests a live response with  the local agent kept as the free fallback.
         response = await engine.generateResponse(
             using: workspace.agentName,
             input: completeRequest
@@ -553,7 +570,7 @@ private struct ECAIAgentWorkspaceView: View {
         isGenerating = false
     }
 }
-// Displays the AI Assistant screen inside Xcode.
+// Displays the AI  Assistant screen inside Xcode.
 #Preview {
     // Creates a preview of the AI Assistant screen.
     AIAssistantView()

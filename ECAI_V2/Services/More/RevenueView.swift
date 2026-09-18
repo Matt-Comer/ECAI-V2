@@ -28,24 +28,31 @@ struct RevenueView: View {
     }
     // Displays the Revenue screen interface.
     var body: some View {
-// Creates the navigation system for the Revenue screen.
+        // Creates the navigation system for the Revenue screen.
         NavigationStack {
             // Places the background behind the Revenue content.
             ZStack {
-        // Displays the black application background.
+                // Displays the black application background.
                 Color.black
                     .ignoresSafeArea()
-            // Places every Revenue section vertically.
+                // Places every Revenue section vertically.
                 VStack(alignment: .leading, spacing: 22) {
-                    // Displays the main screen title.
-                    ECAIMetallicTitle(text: "REVENUE")
-                // Displays the approved revenue summary card.
+                    // Displays the main screen title in metallic gold.
+                    Text("REVENUE")
+                        .font(.title2)
+                        .fontWeight(.black)
+                        .foregroundStyle(goldGradient)
+                        .shadow(
+                            color: .orange.opacity(0.30),
+                            radius: 4
+                        )
+                    // Displays the approved revenue summary card.
                     VStack(alignment: .leading, spacing: 10) {
                         // Displays the revenue heading.
                         Text("Approved Revenue")
                             .font(.headline)
                             .foregroundStyle(.white.opacity(0.75))
-                    // Displays the total approved revenue.
+                        // Displays the total approved revenue.
                         Text(formatCurrency(approvedRevenue))
                             .font(.system(size: 44, weight: .black))
                             .foregroundStyle(goldGradient)
@@ -146,7 +153,7 @@ struct RevenueView: View {
     private func formatCurrency(_ amount: Double) -> String {
         amount.formatted(
             .currency(code: "CAD")
-            .precision(.fractionLength(0))
+                .precision(.fractionLength(0))
         )
     }
 }
@@ -194,7 +201,7 @@ struct RevenueCard: View {
                 blue: 0.09
             )
         )
-    // Clips the card into a rounded rectangle.
+        // Clips the card into a rounded rectangle.
         .clipShape(
             RoundedRectangle(cornerRadius: 18)
         )

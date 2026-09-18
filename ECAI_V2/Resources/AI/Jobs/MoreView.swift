@@ -56,7 +56,16 @@ struct MoreView: View {
                                 subtitle: "Track income and projected earnings"
                             )
                         }
-                        // Opens the AI Assistant screen.
+                        // Opens the Schedule and Reminders screen.
+                        NavigationLink {
+                            ScheduleView()
+                        } label: {
+                            MoreCard(
+                                icon: "calendar.badge.clock",
+                                title: "Schedule & Reminders",
+                                subtitle: "Manage jobs, appointments, and reminders"
+                            )
+                        }                        // Opens the AI Assistant screen.
                         NavigationLink {
                             AIAssistantView()
                         } label: {

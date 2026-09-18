@@ -18,7 +18,8 @@ struct DashboardView: View {
     @State private var showHero = false
     @State private var showRevenue = false
     @State private var showStatistics = false
-// Creates the metallic gold border gradient.
+
+    // Creates the metallic gold border gradient.
     private var borderGradient: LinearGradient {
         LinearGradient(
             colors: [
@@ -30,7 +31,8 @@ struct DashboardView: View {
             endPoint: .bottomTrailing
         )
     }
-// Creates the metallic gold title gradient.
+
+    // Creates the metallic gold title gradient.
     private var titleGradient: LinearGradient {
         LinearGradient(
             colors: [
@@ -42,6 +44,7 @@ struct DashboardView: View {
             endPoint: .bottom
         )
     }
+
     // Creates the premium dark card gradient.
     private var cardGradient: LinearGradient {
         LinearGradient(
@@ -53,7 +56,8 @@ struct DashboardView: View {
             endPoint: .bottomTrailing
         )
     }
-// Displays the complete dashboard interface.
+
+    // Displays the complete dashboard interface.
     var body: some View {
         ZStack {
             // Displays the black application background.
@@ -75,10 +79,16 @@ struct DashboardView: View {
                     revenueCard
                         .opacity(showRevenue ? 1 : 0)
                         .offset(y: showRevenue ? 0 : 22)
-                // Displays the current business statistics.
+                    // Displays the current business statistics.
                     statisticsGrid
                         .opacity(showStatistics ? 1 : 0)
                         .offset(y: showStatistics ? 0 : 24)
+                    // Displays the application copyright.
+                    Text("© 2026 Matthew Comer. All Rights Reserved.")
+                        .font(.caption2)
+                        .foregroundStyle(.white.opacity(0.45))
+                        .frame(maxWidth: .infinity)
+                        .padding(.top, 8)
                 }
                 // Adds spacing around the dashboard.
                 .padding()
@@ -95,6 +105,7 @@ struct DashboardView: View {
             runDashboardAnimation()
         }
     }
+
     // Creates the E.C.A.I. branding header.
     private var brandHeader: some View {
         ZStack(alignment: .topLeading) {
@@ -143,6 +154,7 @@ struct DashboardView: View {
         .shadow(color: .black.opacity(0.55), radius: 12, x: 0, y: 6)
         .shadow(color: Color(red: 0.83, green: 0.69, blue: 0.22).opacity(0.30), radius: 12)
     }
+
     // Creates one social-media image.
     private func socialIcon(_ name: String, size: CGFloat) -> some View {
         Image(name)
@@ -150,6 +162,7 @@ struct DashboardView: View {
             .scaledToFit()
             .frame(width: size, height: size)
     }
+
     // Creates the business intelligence artwork card.
     private var heroCard: some View {
         ZStack(alignment: .bottomLeading) {
@@ -190,6 +203,7 @@ struct DashboardView: View {
         }
         .shadow(color: Color(red: 0.83, green: 0.69, blue: 0.22).opacity(0.25), radius: 10)
     }
+
     // Creates the monthly revenue summary card.
     private var revenueCard: some View {
         // Arranges the revenue information vertically.
@@ -227,6 +241,7 @@ struct DashboardView: View {
         }
         .shadow(color: Color(red: 0.83, green: 0.69, blue: 0.22).opacity(0.20), radius: 8)
     }
+
     // Creates the dashboard statistics.
     private var statisticsGrid: some View {
         // Arranges the statistic cards vertically.
@@ -243,7 +258,7 @@ struct DashboardView: View {
                 value: "\(customerCount)",
                 icon: "person.2.fill"
             )
-        // Displays the number of estimates.
+            // Displays the number of estimates.
             dashboardStatCard(
                 title: "Estimates",
                 value: "\(estimateCount)",
@@ -257,6 +272,7 @@ struct DashboardView: View {
             )
         }
     }
+
     // Creates one slim dashboard statistic card.
     private func dashboardStatCard(
         title: String,
@@ -284,7 +300,7 @@ struct DashboardView: View {
                 .font(.system(size: 28, weight: .black))
                 .foregroundStyle(titleGradient)
         }
-    // Adds compact spacing inside the statistic card.
+        // Adds compact spacing inside the statistic card.
         .padding(.horizontal, 16)
         .padding(.vertical, 11)
         // Creates the dark statistic-card background.
@@ -299,6 +315,7 @@ struct DashboardView: View {
         // Adds a subtle gold glow around the statistic card.
         .shadow(color: Color(red: 0.83, green: 0.69, blue: 0.22).opacity(0.16), radius: 6)
     }
+
     // Runs the dashboard entrance and revenue animations.
     private func runDashboardAnimation() {
         displayedRevenue = 0
@@ -332,6 +349,7 @@ struct DashboardView: View {
             }
         }
     }
+
     // Loads the real approved quote value for the dashboard.
     private func loadMonthlyRevenue() {
         if let data = UserDefaults.standard.data(forKey: "ECAIQuotes"),
@@ -343,6 +361,7 @@ struct DashboardView: View {
             monthlyRevenue = 0
         }
     }
+
     // Loads the real saved customer count for the dashboard.
     private func loadCustomerCount() {
         if let data = UserDefaults.standard.data(forKey: "ECAICustomers"),
@@ -352,6 +371,7 @@ struct DashboardView: View {
             customerCount = 0
         }
     }
+
     // Loads the real saved active-job count for the dashboard.
     private func loadActiveJobs() {
         if let data = UserDefaults.standard.data(forKey: "ECAIJobs"),
@@ -361,6 +381,7 @@ struct DashboardView: View {
             activeJobs = 0
         }
     }
+
     // Loads the real saved estimate count for the dashboard.
     private func loadEstimateCount() {
         if let data = UserDefaults.standard.data(forKey: "ECAIQuotes"),
@@ -371,6 +392,7 @@ struct DashboardView: View {
         }
     }
 }
+
 // Displays the dashboard inside Xcode.
 #Preview {
     DashboardView()
