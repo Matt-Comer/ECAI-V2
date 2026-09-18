@@ -3,27 +3,22 @@
 ## Capstone Project
 
 ### Student
-
 Matthew Comer
 
 ### Course
-
 Mobile Web & App Development
 
 ### College
-
 triOS College
 
 ### Project Description
-
 Elite Contractor AI (E.C.A.I.) is a SwiftUI contractor management application designed for small contractors and service businesses.
 
-The application was created from my experience working in construction and contracting. E.C.A.I. brings customer management, job tracking, quotes, revenue information, business tools, and AI-assisted contractor tools together in one application.
+The application was created from my experience working in construction and contracting. E.C.A.I. brings customer management, job tracking, quotes, scheduling, revenue information, business tools, and AI-assisted contractor tools together in one application.
 
 The goal of the project is to demonstrate how modern mobile development and artificial intelligence can be used to solve real business problems faced by contractors in the field.
 
 ### Core Features
-
 - User Authentication
 - Contractor Business Dashboard
 - Customer Management
@@ -34,6 +29,9 @@ The goal of the project is to demonstrate how modern mobile development and arti
 - Quote and Estimate Management
 - Add and Edit Quotes
 - Quote Status Tracking
+- Schedule and Reminder Management
+- Add Schedule Items
+- Job, Estimate, Appointment, and Follow-Up Scheduling
 - Revenue Overview
 - Business Profile
 - Application Settings
@@ -42,11 +40,9 @@ The goal of the project is to demonstrate how modern mobile development and arti
 - Contractor-Focused AI Command Center
 
 ### Dashboard
-
 The E.C.A.I. dashboard provides a central overview of important business information.
 
 The dashboard displays:
-
 - Monthly Revenue
 - Active Jobs
 - Customer Count
@@ -55,11 +51,9 @@ The dashboard displays:
 - Quick Access to Business Information
 
 ### Customer Management
-
 The Customers section allows contractors to organize and maintain customer information.
 
 Users can:
-
 - Add Customers
 - Edit Existing Customers
 - View Customer Information
@@ -67,11 +61,9 @@ Users can:
 - Maintain Customer Data Between App Sessions
 
 ### Job Management
-
 The Jobs section provides project and job tracking.
 
 Users can:
-
 - Add Jobs
 - Edit Jobs
 - Assign Jobs to Customers
@@ -79,17 +71,14 @@ Users can:
 - Track Job Status
 
 Job statuses include:
-
 - Scheduled
 - In Progress
 - Completed
 
 ### Quote Management
-
 The Quotes section allows contractors to create and manage customer estimates and quotes.
 
 Users can:
-
 - Add Quotes
 - Edit Quotes
 - Enter Customer Information
@@ -98,29 +87,37 @@ Users can:
 - Review Current Estimates
 
 Quote statuses include:
-
 - Draft
 - Sent
 - Approved
 - Declined
 
 ### Revenue Tracking
-
 The Revenue section provides a financial overview based on quote information stored in the application.
 
 It displays:
-
 - Approved Revenue
 - Approved Quotes
 - Pending Quotes
 - Projected Revenue
 
-### AI Command Center
+### Schedule and Reminders
+The Schedule section allows contractors to organize upcoming business activities directly inside E.C.A.I.
 
+Users can:
+- Add Schedule Items
+- Enter Customer and Job Information
+- Select Dates and Times
+- Schedule Jobs
+- Schedule Estimates
+- Schedule Appointments
+- Schedule Follow-Ups
+- View Upcoming Business Activities
+
+### AI Command Center
 The AI Command Center provides contractor-focused tools designed to assist with common business tasks.
 
 The Command Center includes:
-
 - Quote Generation
 - Customer Follow-Up Assistance
 - Marketing Ideas
@@ -130,11 +127,9 @@ The Command Center includes:
 These tools demonstrate how specialized AI-style agents can be organized around different contractor business responsibilities.
 
 ### AI Agent Architecture
-
 E.C.A.I. includes a custom agent architecture built specifically for the project.
 
 The application includes:
-
 - ECAI Agent Protocol
 - Intelligence Engine
 - Customer Success Agent
@@ -145,24 +140,20 @@ The application includes:
 The Intelligence Engine provides a central structure for coordinating the specialized agents used throughout the application.
 
 ### Authentication
-
 Firebase Authentication is integrated into E.C.A.I. to provide user account functionality.
 
 The authentication system includes:
-
 - Login
 - Registration
 - Authentication State Management
 - Logout
 
 ### Data Persistence
-
 E.C.A.I. stores customer, job, and quote information locally so business information remains available between application sessions.
 
 The application uses Codable models and UserDefaults persistence for its primary contractor management data.
 
 ### Project Structure
-
 The project is organized into separate areas for application responsibilities, including:
 
 - Agents
@@ -181,6 +172,7 @@ The project is organized into separate areas for application responsibilities, i
   - Customer
   - Job
   - Quote
+  - Schedule Item
 - Resources
   - AI Tools
   - Customer Views
@@ -193,11 +185,11 @@ The project is organized into separate areas for application responsibilities, i
   - Dashboard
   - Business Profile
   - Quotes
+  - Schedule
   - Settings
 - ViewModels
 
 ### Technologies Used
-
 - Swift
 - SwiftUI
 - Xcode
@@ -208,11 +200,9 @@ The project is organized into separate areas for application responsibilities, i
 - GitHub
 
 ### Design
-
 E.C.A.I. uses a custom contractor-focused visual design created specifically for the project.
 
 The interface includes:
-
 - Black Backgrounds
 - Metallic Gold and Orange Accents
 - Silver Secondary Text
@@ -225,9 +215,7 @@ The interface includes:
 - Contractor-Focused Business Interface
 
 ### Learning Outcomes
-
 This capstone project demonstrates:
-
 - Swift Programming
 - SwiftUI Application Development
 - Navigation and View Composition
@@ -240,6 +228,8 @@ This capstone project demonstrates:
 - Custom UI Design
 - Form Validation
 - Business Logic
+- Schedule and Reminder Management
+- Date and Time Selection
 - AI Agent Architecture
 - Application Organization
 - Git Version Control
@@ -248,13 +238,11 @@ This capstone project demonstrates:
 - Building Software Around a Real-World Business Problem
 
 ### Future Development
-
 E.C.A.I. was designed so additional contractor business functionality can be added in future versions.
 
 Future development could include:
-
 - Cloud-Based Customer and Job Storage
-- Full Scheduling and Calendar Integration
+- External Calendar Integration
 - Automated Reminders
 - Expense Tracking
 - Expanded Material Tracking
@@ -267,11 +255,9 @@ Future development could include:
 - Additional Contractor Automation Tools
 
 ### Project Goal
-
 The long-term goal of Elite Contractor AI is to create an all-in-one contractor business management platform that combines practical construction experience with modern mobile software development and artificial intelligence.
 
 The project was built around problems I have experienced personally during more than 20 years working in construction and contracting. E.C.A.I. demonstrates how those real-world experiences can be translated into a functional mobile application.
 
 ### GitHub Repository
-
 https://github.com/Matt-Comer/ECAI-V2
